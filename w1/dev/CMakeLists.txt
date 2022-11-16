@@ -8,19 +8,27 @@ project(test VERSION 1.0 LANGUAGES CXX)
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED True)
 
+# Include testing library CTest
+include(CTest)
+
 # Adding the library directory
 add_subdirectory(numbers)
 
+set(ExecutableName set1)
+
 # creating the executable
-add_executable(test main.cpp)
+add_executable(${ExecutableName} main.cpp)
 
 # Adding the compiler flags
-target_compile_options(test PRIVATE -Wall -Werror)
+target_compile_options(${ExecutableName} PRIVATE -Wall -Werror)
 
 # Linking the library with the executable
-target_link_libraries(test PUBLIC Numbers)
+target_link_libraries(${ExecutableName} PUBLIC Numbers)
 
 # Specifying the include directory of the library
-target_include_directories(test PUBLIC
+target_include_directories(${ExecutableName} PUBLIC
                             "${PROJECT_BINARY_DIR}"
-                            "${PROJECT_SOURCE_DIR}/numbers/include")
+                            "${PROJECT_SOURCE_DIR}/numbers/inc")
+
+# Enable testing
+enable_testing()

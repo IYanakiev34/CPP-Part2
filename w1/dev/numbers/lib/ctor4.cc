@@ -1,4 +1,4 @@
-#include "../include/numbers.ih"
+#include "../inc/numbers.ih"
 
 Numbers::Numbers(std::initializer_list<int> iniList)
     : d_size(iniList.size()),

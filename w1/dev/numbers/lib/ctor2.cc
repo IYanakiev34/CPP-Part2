@@ -1,4 +1,4 @@
-#include "../include/numbers.ih"
+#include "../inc/numbers.ih"
 
 Numbers::Numbers(std::size_t size, int value)
     : d_size(size),

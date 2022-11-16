@@ -12,3 +12,4 @@ add_library(Numbers
             lib/insert-num.cc
             )   
 # add the precompiled headers
+target_precompile_headers(Numbers PRIVATE inc/numbers.ih)

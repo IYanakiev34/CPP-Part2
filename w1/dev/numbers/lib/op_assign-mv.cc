@@ -1,4 +1,4 @@
-#include "../include/numbers.ih"
+#include "../inc/numbers.ih"
 
 Numbers &Numbers::operator=(Numbers &&tmp)
 {

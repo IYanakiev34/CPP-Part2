@@ -1,4 +1,4 @@
-#include "../include/numbers.ih"
+#include "../inc/numbers.ih"
 
 std::ostream &operator<<(std::ostream &out, Numbers const &numbers)
 {

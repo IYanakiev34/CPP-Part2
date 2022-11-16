@@ -23,11 +23,17 @@ public:
     Numbers &operator=(Numbers &&tmp);
     int &operator[](std::size_t idx);
     int const &operator[](std::size_t idx) const;
+    int const getSize() const;
 
 private:
     friend std::ostream &operator<<(std::ostream &out, Numbers const &numbers);
     int &element(std::size_t idx) const;
 };
+
+inline int const Numbers::getSize() const
+{
+    return d_size;
+}
 
 inline Numbers::~Numbers()
 {
@@ -42,5 +48,28 @@ inline int &Numbers::operator[](std::size_t idx)
 inline int const &Numbers::operator[](std::size_t idx) const
 {
     return element(idx);
+}
+
+inline int &Numbers::element(std::size_t idx) const
+{
+    return d_nums[idx];
+}
+inline bool operator==(Numbers const &lhs, Numbers const &rhs)
+{
+    if (lhs.getSize() != rhs.getSize())
+        return false;
+
+    for (int i = 0; i != lhs.getSize(); ++i)
+    {
+        if (lhs[i] != rhs[i])
+            return false;
+    }
+
+    return true;
+}
+
+inline bool operator!=(Numbers const &lhs, Numbers const &rhs)
+{
+    return !(lhs == rhs);
 }
 #endif

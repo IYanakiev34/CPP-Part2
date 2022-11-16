@@ -1,4 +1,4 @@
-#include "../include/numbers.ih"
+#include "../inc/numbers.ih"
 
 Numbers::Numbers(Numbers &&tmp)
     : d_size(tmp.d_size),
