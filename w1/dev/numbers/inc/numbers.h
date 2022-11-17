@@ -21,14 +21,36 @@ public:
     void swap(Numbers &tmp);
     Numbers &operator=(Numbers const &other);
     Numbers &operator=(Numbers &&tmp);
+    Numbers &operator+=(Numbers const &other) &;
+    Numbers operator+=(Numbers const &tmp) &&;
+    Numbers &operator-=(Numbers const &other) &;
+    Numbers operator-=(Numbers const &tmp) &&;
+    Numbers &operator*=(int rhs) &;
+    Numbers operator*=(int rhs) &&;
+    Numbers &operator/=(int rhs) &;
+    Numbers operator/=(int rhs) &&;
     int &operator[](std::size_t idx);
     int const &operator[](std::size_t idx) const;
     int const getSize() const;
 
 private:
     friend std::ostream &operator<<(std::ostream &out, Numbers const &numbers);
+    friend Numbers operator+(Numbers const &lhs, Numbers const &rhs);
+    friend Numbers operator+(Numbers &&lhs, Numbers const &rhs);
+    friend Numbers operator-(Numbers const &lhs, Numbers const &rhs);
+    friend Numbers operator-(Numbers &&tmp, Numbers const &rhs);
+    friend Numbers operator*(Numbers const &lhs, int rhs);
+    friend Numbers operator*(Numbers &&tmp, int rhs);
+    friend Numbers operator/(Numbers const &lhs, int rhs);
+    friend Numbers operator/(Numbers &&tmp, int rhs);
     int &element(std::size_t idx) const;
+    void add(Numbers const &other);
+    void subtract(Numbers const &other);
+    void mult(int rhs);
+    void div(int rhs);
 };
+
+bool operator==(Numbers const &lhs, Numbers const &rhs);
 
 inline int const Numbers::getSize() const
 {
@@ -53,19 +75,6 @@ inline int const &Numbers::operator[](std::size_t idx) const
 inline int &Numbers::element(std::size_t idx) const
 {
     return d_nums[idx];
-}
-inline bool operator==(Numbers const &lhs, Numbers const &rhs)
-{
-    if (lhs.getSize() != rhs.getSize())
-        return false;
-
-    for (int i = 0; i != lhs.getSize(); ++i)
-    {
-        if (lhs[i] != rhs[i])
-            return false;
-    }
-
-    return true;
 }
 
 inline bool operator!=(Numbers const &lhs, Numbers const &rhs)

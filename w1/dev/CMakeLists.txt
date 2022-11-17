@@ -7,10 +7,6 @@ project(test VERSION 1.0 LANGUAGES CXX)
 # Setting the cpp standard
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED True)
-
-# Include testing library CTest
-include(CTest)
-
 # Adding the library directory
 add_subdirectory(numbers)
 
@@ -29,6 +25,3 @@ target_link_libraries(${ExecutableName} PUBLIC Numbers)
 target_include_directories(${ExecutableName} PUBLIC
                             "${PROJECT_BINARY_DIR}"
                             "${PROJECT_SOURCE_DIR}/numbers/inc")
-
-# Enable testing
-enable_testing()

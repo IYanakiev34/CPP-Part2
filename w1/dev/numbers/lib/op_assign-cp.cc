@@ -2,7 +2,11 @@
 
 Numbers &Numbers::operator=(Numbers const &other)
 {
-    Numbers copy(other);
-    swap(copy);
+    // guard if assigning to self
+    if (*this != other)
+    {
+        Numbers copy(other);
+        swap(copy);
+    }
     return *this;
 }
