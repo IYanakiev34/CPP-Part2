@@ -43,6 +43,15 @@
    - Gte the copy timestamp
    - copyT - (copyT - origT)
 
+## Bitwise overloading
+
+1. Use static_cast to cast between int and the enum type for overloading
+2. For the show(Enum::Type name) name function make char const \*array of the names based on the set bits display names
+3. Bitset size() function return the size of the bitset ie. how many there are
+4. Bitset count() function return how many are set to 1
+5. Bitset test(size_t idx) function test if bit at position i is set (starts from the back)
+   - 00000011 -> bit.test(0) = 1
+
 ## Exercise 5
 
 ### Why is First::fun called?

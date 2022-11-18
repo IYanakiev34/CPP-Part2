@@ -1,4 +1,5 @@
 #include "main.ih"
+#include <bitset> // Add it to main.ih
 
 void testNumbers()
 {
@@ -145,14 +146,31 @@ void testCopy(std::string const &from, std::string const &to)
     copyFile(from, to);
 }
 
-/*void fun(First::Enum t)
+void fun(First::Enum t)
 {
     std::cout << "Called from main function\n";
-}*/
+}
 int main()
 {
-    // testNumbers();
-    // testCopy("../main.cpp", "../main.copy");
-    fun(First::Enum{});
+    // testNumbers(); used for testing the implementation of Numbers
+    // testCopy("../main.cpp", "../main.copy"); used for copying the file
+    // fun(First::Enum{}); Ambigious call cannot understand if it should call main fun or First::fun
+    std::bitset<8> bits((1 << 0) | (1 << 1));
+
+    std::cout << "Print bitset\n";
+    std::cout << bits << std::endl;
+
+    std::cout << "Convert bitset to number\n";
+    std::cout << static_cast<int>(bits.to_ulong()) << std::endl;
+
+    std::cout << "Size of bitset\n";
+    std::cout << bits.size() << std::endl;
+
+    std::cout << "Bitset count\n";
+    std::cout << bits.count() << std::endl;
+
+    std::cout << "Iterate over bitset\n";
+    for (std::size_t i = 0; i != bits.size(); ++i)
+        std::cout << bits.test(i) << std::endl;
     return 0;
 }
