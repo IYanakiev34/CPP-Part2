@@ -25,3 +25,13 @@ target_link_libraries(${ExecutableName} PUBLIC Numbers)
 target_include_directories(${ExecutableName} PUBLIC
                             "${PROJECT_BINARY_DIR}"
                             "${PROJECT_SOURCE_DIR}/numbers/inc")
+
+                        
+add_library(Main copy_file.cc)
+# Create the precompiled headers for main
+target_precompile_headers(Main PRIVATE main.ih)
+
+target_link_libraries(${ExecutableName} PUBLIC Main)
+target_include_directories(${ExecutableName} PUBLIC
+                            "${PROJECT_BINARY_DIR}"
+                            "${PROJECT_SOURCE_DIR}")       

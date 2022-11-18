@@ -30,3 +30,15 @@
 1. Should be implemented as free function or friends: this allows for promotions to either lhs or rhs
 2. Make use of the already built += or -= functions
 3. Cannot bind && ot & since they are free functions
+
+## Overloading -=,_=,/= / _ - same
+
+1. Basically the same
+
+## Creating a copy of a file without streams
+
+1. Use the std::filesystem::copy
+2. Make it with the same timestamp for last modification
+   - Get the original timestamp
+   - Gte the copy timestamp
+   - copyT - (copyT - origT)

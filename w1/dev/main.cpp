@@ -1,8 +1,6 @@
-#include "numbers/inc/numbers.h"
-#include <iostream>
-char const info[] = R"(Testing compiling with c++ 20)";
+#include "main.ih"
 
-int main()
+void testNumbers()
 {
     std::cout << "CONSTRUCT 1 ARG 4\n";
     std::cout << "EXPECT: 0 0 0 0\n";
@@ -140,6 +138,15 @@ int main()
     std::cout << (eq1 != eq2) << std::endl;
 
     std::cout << "\nENDING TESTS\n";
+}
 
+void testCopy(std::string const &from, std::string const &to)
+{
+    copyFile(from, to);
+}
+int main()
+{
+    // testNumbers();
+    // testCopy("../main.cpp", "../main.copy");
     return 0;
 }
