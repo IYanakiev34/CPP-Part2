@@ -7,9 +7,11 @@ project(test VERSION 1.0 LANGUAGES CXX)
 # Setting the cpp standard
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED True)
+
 # Adding the library directory
 add_subdirectory(numbers)
 
+# Set the name of the main executable
 set(ExecutableName set1)
 
 # creating the executable
@@ -21,16 +23,19 @@ target_compile_options(${ExecutableName} PRIVATE -Wall -Werror)
 # Linking the library with the executable
 target_link_libraries(${ExecutableName} PUBLIC Numbers)
 
-# Specifying the include directory of the library
+# Specifying the include directory of the numbers library
 target_include_directories(${ExecutableName} PUBLIC
                             "${PROJECT_BINARY_DIR}"
                             "${PROJECT_SOURCE_DIR}/numbers/inc")
 
-                        
-add_library(Main copy_file.cc)
-# Create the precompiled headers for main
+
+# Add the library for the main
+add_library(Main copy_file.cc namespaces.cc)
+
+# Create the precompiled headers for the main library
 target_precompile_headers(Main PRIVATE main.ih)
 
+# Link the main library to the main executable
 target_link_libraries(${ExecutableName} PUBLIC Main)
 target_include_directories(${ExecutableName} PUBLIC
                             "${PROJECT_BINARY_DIR}"

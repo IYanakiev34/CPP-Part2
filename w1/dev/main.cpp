@@ -144,9 +144,15 @@ void testCopy(std::string const &from, std::string const &to)
 {
     copyFile(from, to);
 }
+
+/*void fun(First::Enum t)
+{
+    std::cout << "Called from main function\n";
+}*/
 int main()
 {
     // testNumbers();
     // testCopy("../main.cpp", "../main.copy");
+    fun(First::Enum{});
     return 0;
 }
