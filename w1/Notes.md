@@ -65,3 +65,13 @@
    For example operator<<(std::cout,"Hello World\n) is a valid function call.
 3. The Koenig Lookup works on namespaces. Since the function fun() defines in main has a parameter type defined inside a namespace (First)
    and First also has a function with identical signature then there is ambiguity that the compiler cannot resolves. The program cannot even compile and produces error: call of overloaded 'fun(First::Enum) is ambigious'. As stated above this is due to having a function with mathics signature from a namespace defined outside of a namespace having arguments that are defined inside the namespace in mind. (First).
+
+## Exercise 6
+
+### Output
+
+1. NONE
+2. EMERG
+3. CRIT ALERT
+4. WARNING ERR
+5. DEBUG INFO WARNING ERR CRIT ALERT EMERG

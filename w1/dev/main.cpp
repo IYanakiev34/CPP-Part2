@@ -150,11 +150,9 @@ void fun(First::Enum t)
 {
     std::cout << "Called from main function\n";
 }
-int main()
+
+void testBits()
 {
-    // testNumbers(); used for testing the implementation of Numbers
-    // testCopy("../main.cpp", "../main.copy"); used for copying the file
-    // fun(First::Enum{}); Ambigious call cannot understand if it should call main fun or First::fun
     std::bitset<8> bits((1 << 0) | (1 << 1));
 
     std::cout << "Print bitset\n";
@@ -172,5 +170,26 @@ int main()
     std::cout << "Iterate over bitset\n";
     for (std::size_t i = 0; i != bits.size(); ++i)
         std::cout << bits.test(i) << std::endl;
+
+    std::bitset<8> m(3);
+    std::cout << "Bitset <8> (3)\n";
+    std::cout << m << std::endl;
+}
+
+void testPrintNamesEnums()
+{
+    show(Msg::NONE);
+    show(Msg::NONE | Msg::EMERG);
+    show(Msg::ALERT | Msg::CRIT);
+    show(Msg::ALL & (Msg::ERR | Msg::WARNING));
+    show(~Msg::NOTICE);
+}
+int main()
+{
+    // testNumbers(); used for testing the implementation of Numbers
+    // testCopy("../main.cpp", "../main.copy"); used for copying the file
+    // fun(First::Enum{}); Ambigious call cannot understand if it should call main fun or First::fun
+    testPrintNamesEnums();
+    // testBits();
     return 0;
 }

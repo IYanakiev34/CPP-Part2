@@ -52,3 +52,10 @@
 1. main.ih
 2. namespaces.cc
 3. namespaces.h
+
+## Set6
+
+1. main.ih
+2. msg.h
+3. msg.ih
+4. show.cc
