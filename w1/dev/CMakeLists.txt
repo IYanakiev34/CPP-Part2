@@ -4,9 +4,7 @@ cmake_minimum_required(VERSION 3.12)
 # Defining the project
 project(test VERSION 1.0 LANGUAGES CXX)
 
-# Setting the cpp standard
-set(CXX_STANDARD 20)
-set(CXX_STANDARD_REQUIRED True)
+set(TARGET test PROPERTY CXX_STANDARD 20)
 
 # Adding the library directory
 add_subdirectory(numbers)

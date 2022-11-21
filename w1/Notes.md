@@ -52,6 +52,16 @@
 5. Bitset test(size_t idx) function test if bit at position i is set (starts from the back)
    - 00000011 -> bit.test(0) = 1
 
+## Exercise 4
+
+### Part 1
+
+istreams define explicit bool operator. The method getline returns an istream which we want to convert to bool,however since we try to do it implicitly to compiler complains. If we perform a static cast to bool now we make it explicit thus we can compiler the code this involves changing the body of the function.
+
+### Part 2
+
+If we do not wish to change the body we could do the following. Since we know that the problem is in the implicit conversion of the istream to bool then we might just return a reference to the istream itself and let the evaluation happen inside the while loop condition. Changing the return type to `std::istream&` makes the code compile again and the program runs as expected.
+
 ## Exercise 5
 
 ### Why is First::fun called?

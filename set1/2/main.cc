@@ -1,55 +1,5 @@
 #include "main.ih"
-#include <bitset>
-void testCopy(std::string const &from, std::string const &to)
-{
-    copyFile(from, to);
-}
 
-void fun(First::Enum t)
-{
-    std::cout << "Called from main function\n";
-}
-
-void testBits()
-{
-    std::bitset<8> bits((1 << 0) | (1 << 1));
-
-    std::cout << "Print bitset\n";
-    std::cout << bits << std::endl;
-
-    std::cout << "Convert bitset to number\n";
-    std::cout << static_cast<int>(bits.to_ulong()) << std::endl;
-
-    std::cout << "Size of bitset\n";
-    std::cout << bits.size() << std::endl;
-
-    std::cout << "Bitset count\n";
-    std::cout << bits.count() << std::endl;
-
-    std::cout << "Iterate over bitset\n";
-    for (std::size_t i = 0; i != bits.size(); ++i)
-        std::cout << bits.test(i) << std::endl;
-
-    std::bitset<8> m(3);
-    std::cout << "Bitset <8> (3)\n";
-    std::cout << m << std::endl;
-}
-
-void testPrintNamesEnums()
-{
-    show(Msg::NONE);
-    show(Msg::NONE | Msg::EMERG);
-    show(Msg::ALERT | Msg::CRIT);
-    show(Msg::ALL & (Msg::ERR | Msg::WARNING));
-    show(~Msg::NOTICE);
-}
-
-std::istream &promptGet(std::istream &in, std::string &str)
-{
-    std::cout << "Enter a line or ^D\n";
-
-    return getline(in, str);
-}
 void testNumbers()
 {
     std::cout << "CONSTRUCT 1 ARG 4\n";
