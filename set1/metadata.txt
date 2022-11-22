@@ -1,2 +1,2 @@
 Set: Set 1
-Author: Ivan Yanakiev
+Authors: Ivan Yanakiev, Alex Swaters
