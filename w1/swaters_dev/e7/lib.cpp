@@ -5,8 +5,8 @@ Options::Destructor Options::s_destructor;
 
 Options::Options(size_t argc, char **argv)
 {
-//    fillOptions(argc, argv);
-//    fillArgs(argc, argv);
+   fillOptions(argc, argv);
+   fillArgs(argc, argv);
 }
 
 void Options::fillOptions(size_t argc, char **argv)
@@ -25,13 +25,13 @@ void Options::fillArgs(size_t argc, char **argv)
     // d_options.length() are the
     // # options
 
-//    d_args = d_nArgs == 0 ? 0 : new std::string[d_nArgs];    // room for the args
-//
-//    for (size_t idx = 1, argIdx = 0; idx != argc; ++idx)    // find the args
-//    {
-//        if (argv[idx][0] != '-')                            // got an argument
-//            d_args[argIdx++] = argv[idx];                   // store it.
-//    }
+   d_args = d_nArgs == 0 ? 0 : new std::string[d_nArgs];    // room for the args
+
+   for (size_t idx = 1, argIdx = 0; idx != argc; ++idx)    // find the args
+   {
+       if (argv[idx][0] != '-')                            // got an argument
+           d_args[argIdx++] = argv[idx];                   // store it.
+   }
 }
 
 Options &Options::initialize(size_t argc, char **argv)
@@ -69,11 +69,14 @@ std::string const &Options::operator[](size_t idx) const {
     return d_args[idx];
 }
 
-Options::~Options() {
+Options::~Options() 
+{
+    std::cout << "Options::~Options()\n";
     delete[] d_args;
-    delete d_args;
 }
 
-Options::Destructor::~Destructor() {
+Options::Destructor::~Destructor() 
+{
+    std::cout << "Options::Destructor::~Destructor()\n";
     delete d_options;
 }
