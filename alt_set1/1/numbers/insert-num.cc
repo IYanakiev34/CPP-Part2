@@ -2,9 +2,9 @@
 
 std::ostream &operator<<(std::ostream &out, Numbers const &numbers)
 {
-    for (std::size_t i = 0; i != numbers.d_size; ++i)
+    for (std::size_t idx = 0; idx != numbers.d_size; ++idx)
     {
-        out << numbers.d_nums[i] << ' ';
+        out << numbers.d_nums[idx] << ' ';
         if (!out)
             break;
     }

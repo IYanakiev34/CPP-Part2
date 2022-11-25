@@ -1,11 +1,20 @@
 #include "main.ih"
 
+//JB: Tests. Good :-)
+//JB: Commented, but not counted in rating.
+//JB: By using a stringstream, you could compare your output with the expected
+//JB: output. Then you'd have an automated test.
+
 void testNumbers()
 {
     std::cout << "CONSTRUCT 1 ARG 4\n";
     std::cout << "EXPECT: 0 0 0 0\n";
     Numbers one(4);
     std::cout << one << std::endl;
+
+    //JB: endl flushes the buffer, which is usually overkill...
+    //JB: unless your class cuases segfaults, in which case you may prefer to
+    //JB: use std::cerr, which is unbuffered anyway.
 
     std::cout << "CONSTRUCT 2 ARG 2,3\n";
     std::cout << "EXPECT: 3 3\n";
@@ -76,8 +85,8 @@ void testNumbers()
 
     std::cout << "\nENDING TESTS\n";
 }
+
 int main()
 {
     testNumbers(); // used for testing the implementation of Numbers
-    return 0;
 }

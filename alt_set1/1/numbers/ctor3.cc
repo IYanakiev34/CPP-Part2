@@ -6,6 +6,7 @@ Numbers::Numbers(std::size_t size, int *values)
 
 {
     // We assume that the size given is the size of the values is that correct?
-    for (std::size_t i = 0; i != d_size; ++i)
-        d_nums[i] = values[i];
+    //JB: The size is the number of values.
+    for (std::size_t idx = 0; idx != d_size; ++idx)
+        d_nums[idx] = values[idx];
 }

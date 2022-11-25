@@ -2,12 +2,12 @@
 
 bool operator==(Numbers const &lhs, Numbers const &rhs)
 {
-    if (lhs.getSize() != rhs.getSize())
+    if (lhs.size() != rhs.size())
         return false;
 
-    for (int i = 0; i != lhs.getSize(); ++i)
+    for (size_t idx = 0; idx != lhs.size(); ++idx)
     {
-        if (lhs[i] != rhs[i])
+        if (lhs[idx] != rhs[idx])
             return false;
     }
 

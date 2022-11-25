@@ -10,3 +10,6 @@ Numbers &Numbers::operator=(Numbers const &other)
     }
     return *this;
 }
+/* JB:
+   Why this optimization?
+*/

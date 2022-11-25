@@ -1,7 +1,7 @@
 #ifndef INCLUDED_NUMBERS_H
 #define INCLUDED_NUMBERS_H
 #include <iosfwd>
-#include <string>
+#include <initializer_list>
 
 class Numbers
 {
@@ -35,7 +35,8 @@ public:
 
     int &operator[](std::size_t idx);
     int const &operator[](std::size_t idx) const;
-    int const getSize() const;
+
+    int size() const;
 
 private:
     friend std::ostream &operator<<(std::ostream &out, Numbers const &numbers);
@@ -63,7 +64,7 @@ private:
 
 bool operator==(Numbers const &lhs, Numbers const &rhs);
 
-inline int const Numbers::getSize() const
+inline int Numbers::size() const
 {
     return d_size;
 }
