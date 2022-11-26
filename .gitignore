@@ -1,4 +1,5 @@
 w1/dev/build/
+*.mov
 
 # Compiled Object files
 **/.DS_Store
