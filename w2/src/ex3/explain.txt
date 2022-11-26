@@ -1,0 +1,8 @@
+1. When throwing an object the throw creates a copy of that object to throw.
+If we catch it by value then we create another copy which could be very useless.
+If we catch by reference we only create one copy.
+
+2. throw; does not copy the currently thrown exception. Throw generally needs an available copy
+constructor, however if we use throw; to rethrow an already caught exception no copy of that exception
+will be created and if we think about it it is logical, since the first throw of that exception has
+already built a copy it would be wasteful on every rethrow of it to create yet another copy to throw.
