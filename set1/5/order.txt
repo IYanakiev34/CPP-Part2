@@ -1,6 +1,0 @@
-explain.txt
-
-main.cc
-main.ih
-namespaces.h
-namespaces.cc

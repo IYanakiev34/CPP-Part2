@@ -1,3 +1,0 @@
-This is an extension of the already created type Numbers. The extra provided functionality is described in the header file
-provided. It includes overloading of operators: +=,-=,*==,/=,/,*,+,-. Again testing is done in the main program for sanity checks
-the same main function is provided since it encapsulates most of the tests needed (at least the very basic ones).

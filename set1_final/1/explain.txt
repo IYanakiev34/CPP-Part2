@@ -1,0 +1,5 @@
+Our task was to create a small library implementation of a data structure called Numbers.
+This structure could hold arbitrary amount of integers, supports overloaded operators such as:
+index,(in)equality, and assignment. The header file has extra functionality to support even more
+overloaded operators this is because it is used in exercise 2 and to avoid header duplication
+we used one header for both exercises.

@@ -1,6 +1,0 @@
-This is a little library implementing the type Numbers which holds a fixed number of integer values.
-Although the exercise ask only for the index operator,inserion, and (in)equality the full interface
-is provided that will support both exercise 1 and 2. This is due to the fact that the header will be needed
-in both exercises and we avoid duplication. The main although not needed acts as a test suite for the implemnetation.
-It was originally done using GTest however due to the format of the submission test have been moved to main so that you can
-see them.

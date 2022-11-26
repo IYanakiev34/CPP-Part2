@@ -1,4 +1,0 @@
-In order to copy file I have used the filesystem API's function copy_file. This function takes 2 arguments from and to.
-However, this function does not solve the cirtical problem of the same timestamps. Thus by using the function last_write timestamp
-and some basic arithmetic we are abel to modify the timestamp of the copied file to be exact match to the original file. The main function
-calls the function copyFile(from,to) and tests our implementation.

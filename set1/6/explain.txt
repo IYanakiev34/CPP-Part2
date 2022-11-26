@@ -1,8 +1,0 @@
-The main output is the following:
-NONE
-EMERG
-CRIT ALERT
-WARNING ERR
-DEBUG INFO WARNING ERR CRIT ALERT EMERG
-
-

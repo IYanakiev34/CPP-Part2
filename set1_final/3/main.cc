@@ -1,14 +1,5 @@
 #include "main.ih"
 
-void testPrintNamesEnums()
-{
-    show(Msg::NONE);
-    show(Msg::NONE | Msg::EMERG);
-    show(Msg::ALERT | Msg::CRIT);
-    show(Msg::ALL & (Msg::ERR | Msg::WARNING));
-    show(~Msg::NOTICE);
-}
-
 enum
 {
     ERROR = 1,
@@ -27,10 +18,9 @@ int usage(char const *const prog)
 
 int main(int argc, char **argv)
 {
-    /*if (argc < 2)
+    if (argc < 2)
         return usage(argv[0]);
 
-    copyFile(argv[1], argv[2]);*/
-    testPrintNamesEnums();
+    copyFile(argv[1], argv[2]);
     return 0;
 }

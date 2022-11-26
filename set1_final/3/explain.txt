@@ -1,0 +1,5 @@
+We had to develop a small function which would copy a file without using 
+the streams in cpp. The copied file had to have the same timestamp as the original
+this was done using the std::filesystem:;copy_file and last_write_time functions.The 
+main function accepts 2 arguments passed on the command line. These are the from and to
+destinations of the files.

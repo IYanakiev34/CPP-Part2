@@ -1,7 +1,0 @@
-#include <iostream>
-#include <string>
-#include <filesystem>
-#include <chrono>
-namespace fs = std::filesystem;
-
-void copyFile(std::string const &from, std::string const &to);

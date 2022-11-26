@@ -1,3 +1,0 @@
-ctor3- not sure how to compare with size of int *arr
-op_assign-cp.cc- idk what he means
-main.cc- didn't apply test comments, main thing tho is to use sstream and \n over endl
