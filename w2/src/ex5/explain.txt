@@ -1,0 +1,5 @@
+We create a simple program that allocates 10 objects from a class which can
+only use maximum of 4 objects. In order to clean the memory afte the eception is thrown
+we actually do not need to do much. If we only catch the exception the memory will 
+automatically be freed since when new fails it automatically deletes any memory that
+it has allocated.

@@ -2,3 +2,11 @@ Ivan:
 I can handle ex 13 and probably 10 from the basic. From the advanced 14,15 seem fine.
 I am pretty confident in my solutions for 1 and 3 although I think 3 might be unfinished due to
 weird wording on his part.
+
+Ex13- I think I have it correct I watched the videos but the question is very weird. Like what I have
+done should be correct but I don't undertsand why he talks about how delete[] works when we don't even
+use delete. Delete is automatically being used ones the exception is being called when new fails.
+
+Ex15 tips: So i think the problem with exit(3) is that it calls every functions registered with atexit or onexit in reverse order
+if one of these function contains something like longjmp then the behavior is undefined thus I believe this is the critical
+flaw with the exit(). Now we only need to illustrate it

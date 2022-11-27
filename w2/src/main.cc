@@ -2,6 +2,8 @@
 #include <string>
 #include "ex1/demo.h"
 #include "ex3/dummy.h"
+#include "ex5/maxfour.h"
+
 int main(int argc, char **argv)
 {
     /*try
@@ -13,6 +15,7 @@ int main(int argc, char **argv)
         std::cerr << "main\n";
     }*/
 
+    /*
     // Throwing without using references
     std::string ivan{"ivan"};
     Dummy dum(ivan);
@@ -35,6 +38,16 @@ int main(int argc, char **argv)
     catch (Dummy &dum)
     {
         std::cout << "Caught ref\n";
+    }
+    */
+
+    try
+    {
+        new MaxFour[10];
+    }
+    catch (std::string const &ex)
+    {
+        std::cout << ex << "\n";
     }
 
     return 0;
