@@ -4,30 +4,18 @@ char const *names[] = {"DEBUG", "INFO", "NOTICE",
                        "WARNING", "ERR", "CRIT", "ALERT", "EMERG"};
 void show(Msg msg)
 {
-    // Handle case when NONE
-    if (static_cast<int>(msg) == 0)
+    int int_msg = static_cast<int>(msg);
+    if (int_msg == 0)
     {
         std::cout << "NONE\n";
         return;
     }
 
-    // Handle case where all
-    if (static_cast<int>(msg) == 255)
+    for (std::size_t idx = 0; idx != 8; ++idx)
     {
-        std::cout << "ALL\n";
-        return;
+        if (int_msg & (1 << idx))
+            std::cout << names[idx] << ' ';
     }
 
-    Msg const msgs[] = {Msg::DEBUG, Msg::INFO, Msg::NOTICE,
-                        Msg::WARNING, Msg::ERR, Msg::CRIT, Msg::ALERT, Msg::EMERG};
-
-    int const len = sizeof(names) / sizeof(names[0]);
-
-    // Iterate over each Msg type and check if bit is set
-    for (std::size_t name = 0; name != len; ++name)
-    {
-        if (static_cast<int>(msg & msgs[name]) > 0)
-            std::cout << names[name] << ' ';
-    }
-    std::cout << "\n";
+    std::cout << '\n';
 }
