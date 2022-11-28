@@ -9,6 +9,7 @@ int handleException()
     catch (int val)
     {
         if (val != 0)
+            std::cout << "Arguments violate the program's requirements\n";
             return 1;
 
         return 0;
