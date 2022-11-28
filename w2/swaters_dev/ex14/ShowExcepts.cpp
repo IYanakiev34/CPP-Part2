@@ -1,5 +1,4 @@
 #include <exception>
-#include <iostream>
 #include "ShowExcepts.h"
 
 ShowExcepts::ShowExcepts(void (*func)(), int value = 1)
@@ -9,7 +8,7 @@ ShowExcepts::ShowExcepts(void (*func)(), int value = 1)
 
 void ShowExcepts::asNoexcept()
 {
-    if (val == 1) // simulate optional noexcept argument
+    if (val != 0) // simulate optional noexcept argument
     {
         try // noexcept effectively wraps body in a try
         {
@@ -19,10 +18,7 @@ void ShowExcepts::asNoexcept()
         {
             std::terminate();
         }
+        return;
     }
-    else // if the optional argument doesn't evaluate to true, then noexcept is ignored
-    {
-        std::cout << "noexcept ignored" << std::endl;
-        func();
-    }
+    func(); // when noexcept is not active, this behaves like a normal function
 }

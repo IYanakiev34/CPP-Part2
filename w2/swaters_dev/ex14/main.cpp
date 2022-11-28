@@ -5,7 +5,7 @@ int main()
 {
     try
     {
-        ShowExcepts([]() { throw 1; }, 0).asNoexcept();
+        ShowExcepts([]() { throw 1; }, 1).asNoexcept();
     }
     catch (...) // can catch when argument disables noexcept, but never otherwise
     {
