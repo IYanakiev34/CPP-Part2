@@ -1,0 +1,4 @@
+#include "interf.h"
+#include <iostream>
+
+int handleException()

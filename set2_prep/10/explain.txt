@@ -1,0 +1,6 @@
+Following the slides (specifically slide 34 and 35 of the exceptions lecture),
+we have developed a function which handles the exceptions. Thus in the main function
+no matter what type of exception is caught we have only one catch statement which calls a 
+function to do the rest. This applies the 1:1 coordinate design. Since we did not have to implement
+the class itself no implementations are created neither fore the class nor for the usage function. We
+only accounted for what the exercise presumably wanted. 
