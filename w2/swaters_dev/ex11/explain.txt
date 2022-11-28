@@ -14,5 +14,9 @@ The output is as follows:
     Caught by reference ID: 1
 
 First, note that in both cases, the caught ID is greater than the thrown ID, indicating a copy was made.
+Thus, when throwing objects or references copies of the (referred to) objects are thrown.
+
 Second, note that the ID of the caught object is 2 when caught by value, but only 1 when caught by reference.
 This indicates that the copy constructor was called twice when caught by value, but only once when caught by reference.
+Therefore, exception catchers catching objects result in additional copies of thrown objects, compared to exception catchers 
+catching references to objects.
