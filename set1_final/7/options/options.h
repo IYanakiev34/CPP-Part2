@@ -17,7 +17,7 @@ public:
     static Options &instance();
     [[nodiscard]] bool option(int ch) const;
     [[nodiscard]] size_t nArgs() const;
-    [[nodiscard]] std::string const &operator[](size_t idx) const;
+    std::string const &operator[](size_t idx) const;
 
 private:
     Options(size_t argc, char **argv);

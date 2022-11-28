@@ -24,7 +24,7 @@ public:
     [[nodiscard]] size_t nArgs() const;
 
     // index operator(s) returning the indexed argument
-    [[nodiscard]] std::string const &operator[](size_t idx) const;
+    std::string const &operator[](size_t idx) const;
 
 private:
     Options(size_t argc, char **argv);
