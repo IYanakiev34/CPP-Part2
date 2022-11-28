@@ -1,0 +1,18 @@
+I want to see what copies of objects are made depending on how options are handled.
+Therefore, I create a simple class with an ID and a way to show it. What makes this class
+unique is that its copy constructor increments the id of the object it copies. This way it
+is easy to tell if and how many copies are made.
+
+Main calls testException twice. The first call catches by value and the second by reference.
+The output is as follows:
+    Throwing by value:
+    Before throw ID: 0
+    Caught by value ID: 2
+
+    Throwing by reference:
+    Before throw ID: 0
+    Caught by reference ID: 1
+
+First, note that in both cases, the caught ID is greater than the thrown ID, indicating a copy was made.
+Second, note that the ID of the caught object is 2 when caught by value, but only 1 when caught by reference.
+This indicates that the copy constructor was called twice when caught by value, but only once when caught by reference.
