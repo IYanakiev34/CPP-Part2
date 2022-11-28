@@ -5,8 +5,6 @@
 #include <iostream>
 #include "Identified.h"
 
-int Identified::nextId = 0;
-
 Identified::Identified(int id)
 : id(id)
 {}
