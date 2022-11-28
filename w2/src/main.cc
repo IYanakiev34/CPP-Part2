@@ -66,5 +66,23 @@ int main(int argc, char **argv)
         return handleException();
     }
     */
+
+    // Ex 15 using exit(3)
+    /*
+    std::string ex{"Exercise 15"};
+    Dummy dum{ex};
+    exit(3);
+    */
+
+    std::string ex2{"Exceptions are good!"};
+    try
+    {
+        Dummy dum{ex2};
+        throw 1; // Assume something goes wrong something like exit should happen
+    }
+    catch (...)
+    {
+        std::cout << "Exception caught\n"; // Destructor of the dum object is called
+    }
     return 0;
 }

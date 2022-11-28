@@ -1,0 +1,9 @@
+Exit(3) function causes normal process termination. All functions registered
+with atexit(3) or on_exit(3) are called in reverse order. There are a few problems
+with the exit(3) call. First of all exit(3) does not call destructors. So in the minimal
+provided demo we can see that the destructor is not called for the object thus our program leaks.
+Another more elaborate problem is that if any of the on_exit() or atexit() functions does not return
+or calls _exit(2) then none of the remaining functions are called. Since these functions could potentially
+be used to clean up resources this poses the problem again that our resources would not be cleaned up.
+Exit does not conform with the RAII standard and at too many ocassions the program can leak. Using exceptions
+we can again run the same program and see that the destructor is called and our object is cleaned up properly.
