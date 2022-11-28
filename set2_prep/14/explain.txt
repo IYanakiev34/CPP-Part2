@@ -1,0 +1,6 @@
+We want a function to behave like noexcept without actually using noexcept. Noexcept effectively wraps the
+relevant function in a try, and if any exception is thrown, it is caught and std::terminate is called. We
+implement this directly in asNoexcept, but the catch (with std::terminate) is explicitly included. Furthermore,
+noexcept allows an argument to be passed (e.g. void fun() noexcept(statement)), which allows noexcept to be
+ignored when statement (evaluated at runtime) is false. We implement this by only applying the try/catch wrapper
+when the int argument passed to ShowExcepts is non-zero.

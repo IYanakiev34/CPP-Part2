@@ -1,5 +1,6 @@
 We create a simple program that allocates 10 objects from a class which can
-only use maximum of 4 objects. In order to clean the memory afte the eception is thrown
+only use maximum of 4 objects. In order to clean the memory after the exception is thrown
 we actually do not need to do much. If we only catch the exception the memory will 
 automatically be freed since when new fails it automatically deletes any memory that
-it has allocated.
+it has allocated. The way the program is structured follows the way show in the video sent to us
+there it was a very similar problem and the solution is inspired from the solution in the video.
