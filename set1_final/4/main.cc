@@ -32,6 +32,4 @@ int main()
     std::string str{""};
     while (promptCompilesBodyChange(std::cin, str))
         std::cout << "string is: " << str << std::endl;
-
-    return 0;
 }

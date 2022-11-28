@@ -22,5 +22,4 @@ int main(int argc, char **argv)
         return usage(argv[0]);
 
     copyFile(argv[1], argv[2]);
-    return 0;
 }

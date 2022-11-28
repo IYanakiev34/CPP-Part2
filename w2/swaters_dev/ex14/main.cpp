@@ -11,5 +11,4 @@ int main()
     {
         std::cout << "caught" << std::endl;
     }
-    return 0;
 }

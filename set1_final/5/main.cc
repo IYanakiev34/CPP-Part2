@@ -12,5 +12,4 @@ int main()
     // fun in main is commmented then
     // fun(First::Enum{}) will call the fun function in the First namespace
     // Second::fun(First::Enum{}) used to call fun in the Second namespace
-    return 0;
 }

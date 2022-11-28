@@ -25,5 +25,4 @@ void testOptions(int argc, char **argv)
 
 int main(int argc, char **argv) {
     testOptions(argc, argv);
-    return 0;
 }

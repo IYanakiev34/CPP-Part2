@@ -12,5 +12,4 @@ void testPrintNamesEnums()
 int main()
 {
     testPrintNamesEnums();
-    return 0;
 }

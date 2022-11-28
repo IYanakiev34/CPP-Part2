@@ -142,5 +142,4 @@ void testNumbers()
 int main()
 {
     testNumbers(); // used for testing the implementation of Numbers
-    return 0;
 }
