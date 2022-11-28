@@ -1,11 +1,8 @@
-#include <iostream>
-#include <string>
-#include "ex1/demo.h"
-#include "ex3/dummy.h"
-#include "ex5/maxfour.h"
+#include "main.ih"
 
 int main(int argc, char **argv)
 {
+    // Ex1
     /*try
     {
         Demo demo{1};
@@ -16,6 +13,7 @@ int main(int argc, char **argv)
     }*/
 
     /*
+    // Ex3
     // Throwing without using references
     std::string ivan{"ivan"};
     Dummy dum(ivan);
@@ -41,6 +39,8 @@ int main(int argc, char **argv)
     }
     */
 
+    /*
+    // Ex 5
     try
     {
         new MaxFour[10];
@@ -49,6 +49,22 @@ int main(int argc, char **argv)
     {
         std::cout << ex << "\n";
     }
+    */
 
+    // ex 2
+    /*
+    try
+    {
+        Arg const &arg = Arg::instance(argc, argv, "ace:fg:h"); // 1
+
+        Process process{arg}; // 2
+
+        process.run(); // 3
+    }
+    catch (...)
+    {
+        return handleException();
+    }
+    */
     return 0;
 }
