@@ -1,0 +1,19 @@
+If derived class inherits from base using the public accessor a few things happen:
+1. Derived can access all of the public members of Base
+2. Derived can access all of the protected members of Base
+3. Derived cannot access any private members of Base
+4. Users of Derived can access public members of Derived and any public members of Base
+5. Users of Derived cannot access any of the private/protected members of either Base or Derived
+6. If a class inherits from Derived it can still access any of the public/protected members of both
+Derived and Base class and still cannot access any of the private members of either Derived or Base class
+
+If derived class changes the modifier for inheritance over the Base to be protected
+1. All the public and protected members of Base become protected in Derived thus
+Derived class designed can still use them but they will not be exposed to the Users
+of the Derived class.
+
+If modifier changes to private
+1. All of the public and protected members of Base class become private in the Derived class
+thus again the designer can use them but then neither can the user of the class nor can the designer
+if something inherits from the Derived class it will not have access to the protected/public/or private
+members of the base class
