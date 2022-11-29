@@ -2,6 +2,7 @@
 #define INCLUDED_OPTIONS_
 
 #include <iosfwd>
+#include <string>
 
 class Options
 {

@@ -2,6 +2,7 @@
 #define INCLUDED_OPTIONS_
 
 #include <iostream>
+#include <string>
 
 class Options {
     std::string d_options;

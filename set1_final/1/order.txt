@@ -6,10 +6,10 @@ numbers/ctor1.cc
 numbers/ctor2.cc
 numbers/ctor3.cc
 numbers/ctor4.cc
-numbers/ctor-cp.cc
-numbers/ctor-mv.cc
+numbers/ctor_cp.cc
+numbers/ctor_mv.cc
 numbers/eq.cc
-numbers/insert-num.cc
+numbers/insert_num.cc
 numbers/swap.cc
-numbers/op_assign-cp.cc
-numbers/op_assign-mv.cc
+numbers/op_assign_cp.cc
+numbers/op_assign_mv.cc

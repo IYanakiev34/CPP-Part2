@@ -1,4 +1,4 @@
-#include "../inc/msg.ih"
+#include "msg.ih"
 
 char const *names[] = {"DEBUG", "INFO", "NOTICE",
                        "WARNING", "ERR", "CRIT", "ALERT", "EMERG"};
