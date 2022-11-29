@@ -5,5 +5,5 @@ main.cc
 dummy.ih
 dummy.h
 ctor.cc
-ctor-cp.cc
+ctor_cp.cc
 dtor.cc

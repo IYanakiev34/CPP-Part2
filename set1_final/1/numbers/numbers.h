@@ -36,7 +36,7 @@ public:
     int &operator[](std::size_t idx);
     int const &operator[](std::size_t idx) const;
 
-    int size() const;
+    size_t size() const;
 
 private:
     friend std::ostream &operator<<(std::ostream &out, Numbers const &numbers);
@@ -64,7 +64,7 @@ private:
 
 bool operator==(Numbers const &lhs, Numbers const &rhs);
 
-inline int Numbers::size() const
+inline size_t Numbers::size() const
 {
     return d_size;
 }
