@@ -1,0 +1,23 @@
+If we create a Derived object using the base/copy/move constructor
+the Base class base constructor is always called. Copy and move
+constructors are not implicitly called when constructing the Base class.
+In order for them to be called we need to explicitly call them in the 
+initializer list of the Derived respective constructor.
+    Example:
+        Derived::Derived(Derived const &other)
+            : Base(other)
+        {}
+
+If we wish to call the Base move constructor when using the Derived copy 
+and call the Base copy when using the Derived move we need to do the following:
+
+Case call Base move when using Derived Copy:
+    Derived::Derived(Derived const &other)
+        : Base(static_cast<Derived &&>(const_cast<Derived &>(other)))
+        {}
+
+Case call Base copy when using Derived Move:
+    Derived::Derived(Derived tmp)
+        : Base(tmp)
+        {}
+        
