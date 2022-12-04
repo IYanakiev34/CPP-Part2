@@ -1,0 +1,36 @@
+For this exercise we use the class std::string as a base class,
+although that's bad practice. Why is it bad practice?
+    Reasons for inheritance (according to the slides):
+        - Private if you must inherit a protected member. However,
+        std::string has no protected members.
+        - Private if you need controlled polymorphism. However,
+        std::string has no virtual functions.
+        - Public if you need polymorphism. However, std::string has
+        no virtual functions.
+
+I define String inheriting std::string. I define its insert using
+std::string::insert(size_t, const std::string&) with position 0 and
+txt as arguments. Insert returns a reference to std::string, which I
+could cast to a String reference, but I don't want to cast down a
+hierarchy, so I use a second line to return this. I define the
+comparisons by casting the arguments to std::string and using the
+comparisons on std::string. I use as few casts as possible and instead
+define comparisons in terms of other comparisons. I define == and >
+because although I can define == using 2 >, I think it would be less
+efficient than the cast?
+
+In main I demonstrate that String still has access to std::string's
+insert methods, and that the comparisons work as intended. Here is the
+output from main:
+    Before inserting a space at position 5: Helloworld!
+    After insert: Hello world!
+
+    Demonstrating comparisons:
+    str == str: true
+    str != str: false
+    str < str: false
+    str <= str: true
+    str > str: false
+    str >= str: true
+
+Which is as expected.
