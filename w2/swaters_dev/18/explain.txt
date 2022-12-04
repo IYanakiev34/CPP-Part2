@@ -1,0 +1,46 @@
+Show what happens if you call each of Derived's constructors.
+    I've set each Derived constructor to print a statement indicating
+    its call. In main, I call each of the Derived constructors. The
+    output is (first of 3 lines is from main indicating what is called):
+        Default constructor
+        Base constructor call
+        Derived constructor call
+
+        Copy constructor
+        Base constructor call
+        Derived copy constructor call
+
+        Move constructor
+        Base constructor call
+        Derived move constructor call
+    In summary, the Base constructor is called for each of the Derived
+    constructors. Then the respective Derived constructor is called.
+    In the modified code, the output is:
+        Default constructor
+        Base constructor call
+        Derived2 constructor call
+
+        Copy constructor
+        Base copy constructor call
+        Derived2 copy constructor call
+
+        Move constructor
+        Base move constructor call
+        Derived2 move constructor call
+    Indicating that the respective Base copy/move constructor is now called.
+
+What would you have to do to ensure that Derived's copy constructor calls Base's move constructor?
+    The copy constructor is passed a constant reference to a Derived object. The move constructor
+    is passed a rvalue reference to a Derived object. So, the copy constructor would have to static
+    cast the const lvalue reference to a rvalue reference. The code would look like:
+        Derived2(const Derived2& d) : Base(static_cast<Derived2&&>(d)) {
+            std::cout << "Derived2 copy constructor call\n";
+        }
+
+And how would you realize that Derived's move constructor calls Base's copy constructor?
+    An rvalue reference is passed to a move constructor. The parameter is named, so the rvalue
+    is no longer anonymous. Then the Base copy constructor can be called with the parameter name.
+    The code would look like:
+        Derived2(Derived2&& d) : Base(d) {
+            std::cout << "Derived2 move constructor call\n";
+        }

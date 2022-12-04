@@ -1,0 +1,14 @@
+Assume a class Derived is publicly inheriting from an existing class Base.
+What members can be accessed by users of a Derived object?
+    Any public members of Base and Derived.
+
+What members can be accessed by Derived's designer?
+    Any non-private members of Base and obviously all members of Derived.
+
+What changes if Derived uses protected inheritance?
+    Any inherited members of Base are now protected. They are no longer visible
+    to users of Derived objects.
+
+And what changes if Derived uses private inheritance?
+    Any inherited members of Base are now private. They are no longer visible
+    to users of Derived objects or inheritors of Derived (unless promoted with using).
