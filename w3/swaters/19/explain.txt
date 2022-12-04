@@ -1,0 +1,41 @@
+Explain why, when Derived is derived from Base the Base class is
+constructed before the Derived class, and the Base class is destroyed
+only after the Derived class has been destroyed.
+    Inheritance represents an "is-a" relationship. The Derived class
+    'is' a Base class, and shares its properties. Conceptually, the
+    behavior of the specific Derived assumes the behavior of the general
+    Base. Therefore, the Base class must be constructed before the
+    Derived class so that the assumed behavior is available to the Derived
+    class. The Base class must be destroyed after the Derived class because
+    destroying the Derived class may rely on the Base class's behavior.
+
+Provide a small example, and explain (in words, not by running the program)
+that the example would completely fail if the ordering would be reversed.
+    class Base
+    {
+        Foo *foo;
+    public:
+        Base() { foo = new Foo; }
+        Foo *getFoo() { return foo; }
+        ~Base() { delete foo; }
+    };
+
+    class Derived : public Base
+    {
+        Bar *bar; // relies on foo for construction/destruction
+    public:
+        Derived() { bar = new Bar(getFoo()); }
+        ~Derived() { delete bar; }
+    };
+
+    If you attempt to construct Derived before Base, Base's foo reference is not
+    yet available, so bar cannot be constructed from it. If you attempt to destroy
+    Base before Derived, foo is destroyed before bar and bar relies on foo for its
+    destruction.
+
+When using placement new, or in the context of unrestricted unions, explicit
+destructor calls are encountered. Explain why code using such explicit destructor
+calls for objects of a class Derived, which was derived from Base doesn't have to call
+explicitly the Base class's destructor.
+    The destructor of Derived implicitly calls the destructor of Base before it
+    destroys Derived, so there is no need to call the Base destructor explicitly.
