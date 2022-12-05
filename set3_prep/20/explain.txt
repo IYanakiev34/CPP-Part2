@@ -1,0 +1,24 @@
+I define a StringRepeat class inheriting publicly from std::string.
+Thus, all public members of std::string are available from StringRepeat
+and its protected members are available to derived classes. String offers
+an append method that takes a string and adds it to the end of itself.
+I use append in the StringRepeat constructor (which takes count and string
+arguments) to create a string that is the concatenation of count copies.
+Thus, StringRepeat allows you to create a string that is the concatenation
+of count copies of a string, and inheriting from string, it allows users all
+the methods of std::string, so it can be used as a string. I demonstrate this
+in main, with four functions, each of which takes a string as an argument as
+a value, lvalue reference, rvalue reference, and pointer. The output is as follows,
+showing that StringRepeat behaves like a string in all cases (see main for more
+detail):
+    Printing string value
+    Hello Hello Hello
+
+    Printing string reference
+    Hello Hello Hello
+
+    Printing string rvalue reference
+    Hello Hello Hello
+
+    Printing string pointer
+    Hello Hello Hello

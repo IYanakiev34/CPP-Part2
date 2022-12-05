@@ -1,0 +1,15 @@
+Since WIP is a third party library it's API might change
+in future releases. If use the composition described in the
+exercises we are prone to be to tightly confided to the third-party
+library calls. 
+
+The same goes for when using comopsition we are directly using the
+third-party library object in our class which might cse potentially error
+in the future.
+
+An alternative solution is to create wrapper class around the third-party
+class. In that we we are more in control and now we are not so tightly confined
+to the third-party class API. Even if the api changes it will only break our
+wrapper class potentially. Now we only have to fix the wrapper and the code will
+work as expected, but if we had not used wrapper we would have to manually fix
+each place in the code where wed use the WIP object.

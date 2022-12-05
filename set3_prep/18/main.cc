@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    /*Ex 18
+    // Ex 18
     std::cout << "BASE CONSTRUCTION\n";
     // Base constructors
     Derived normal{};
@@ -19,11 +19,6 @@ int main(int argc, char **argv)
     std::cout << "\n\n";
 
     std::cout << "DESTRUCTION TAKES PLACE NOW\n";
-    */
 
-    Base22 obj{};
-
-    caller(obj);
-    obj.hello();
     return 0;
 }

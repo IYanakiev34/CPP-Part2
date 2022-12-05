@@ -1,0 +1,13 @@
+1. Output of the program is:
+Thrown value: 1
+main
+The destructor is not called since we have a function try-block. Ones we encounter an exception and throw it
+we never reach the end braces of the constructor thus the object is not 'properly constrcuted' and its destructor
+woudl not be called.
+
+2. If we modify the constructor to have a body try-catch block we could avoid the abovementioned issue.
+We could throw and catch inside the constructor thus the object would have been properly created and it's
+destructor will be called.
+
+3. In the final program the destructor is called when the object goes out of scope in our case
+when the try curly braces end since the object is declared inside the try block.

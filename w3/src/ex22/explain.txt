@@ -1,0 +1,15 @@
+Whenw e create a Base class object the compiler allocates
+some amount of memory to fit that object in and instantiates
+the members of the class. Since we do not have polymorphism
+in order to call derived function hello from the base class
+it is clear that we need to perform some sort of assignment.
+However, assignment from base class object to a derive class
+object is problematic. It is possible that some data might be
+missing. Although derived class objects are bas class objects the
+reverse does not hold true. In order to call the Derived::hello
+in the function caller, we will need to perform this exact assignment,
+which is usually denied by the compiler. What we do however is to
+perform a static_cast<Derived22 &>(obj) this allows us to downcast
+the base class to a derived class and assign it. Thus being able to call
+the function hello of the derived class. However, as stated above this is
+bad practice due to the fact the we might end up with missing data.

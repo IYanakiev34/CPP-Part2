@@ -1,7 +1,3 @@
-// Ex18
-#include "ex18/base.h"
-#include "ex18/derived.h"
-// Ex 22
 #include "ex22/base22.h"
 #include "ex22/derived22.h"
 #include <iostream>
