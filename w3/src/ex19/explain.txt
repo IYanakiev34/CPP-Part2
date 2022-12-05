@@ -1,0 +1,25 @@
+#NOTE not sure about this also not sure how to provide (EXAMPLE program without running it)
+
+
+Not sure exactly how to explain it the problem is that
+if the derived class is dependant on members of the base class
+in order to construct itself if derived class tries to construct
+itself first then an error will occur since the base class members
+are not initialized.
+
+The destructor itself is a function. If the base class is destroyed first
+and the derived class depends on the members of the base class and needs to do
+some extra processing before deleting the objects then they would appear to be invalid
+since are already destroyed.
+
+Placement new operator allocates a block of memory that could fit the object we which to create.
+We are solely responsible for the memory allocated and the destruction of it. If we use a pointer
+for the Derived class an initialize it using placement new and delete is not overloaded we would
+need to call the destructor and then also delete the pointer itself. However, due to the fact
+that Base constructor is called when constructing Derived and Base is not initialized using a pointer.
+The Base destructor would also be called. If we have not overloaded delte for derived we would need to
+explicitly also call delete ptr to delete the pointer to the derived class. In the case of unrestricted
+unions again explicit call ar required. if no special member function are defined by the user such as
+copy/move/destructors then they are deleted by the compiler. If they are defined by the user and the object
+requires non-trivial destruction we must use placement new and the explicit destructor call in order to free the
+memory.
