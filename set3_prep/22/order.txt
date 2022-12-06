@@ -1,6 +1,6 @@
 explain.txt
 
-main.in
+main.ih
 main.cc
 caller.cc
 

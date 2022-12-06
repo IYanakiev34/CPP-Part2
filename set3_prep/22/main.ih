@@ -1,5 +1,5 @@
-#include "ex22/base22.h"
-#include "ex22/derived22.h"
+#include "base22.h"
+#include "derived22.h"
 #include <iostream>
 
 void caller(Base22 &obj);
