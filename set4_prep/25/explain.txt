@@ -1,0 +1,8 @@
+The program has 2 Vtables and 2 V pointers. The reason for that is
+whereever a class defines a virtual function it's adress is stored in
+the vtable. When a class overrides a virtual function it also stores it
+in the vtable. We have 2 V pointers since objects have the v pointers they
+do not have the tables themself. We have 2 objects: One form class base and 
+one from class derived. They own the v pointers. The 2 message objects are
+normal class that do not have v tables and the message object does not have V
+pointer. 

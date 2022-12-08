@@ -1,0 +1,14 @@
+In order to instantiate a polymophic type through base class
+we usually do:
+        Base *bp = new Derived;
+However now we want to create an array of specific size of objects
+Derived and return a pointer to it. Thus we cannot do:
+    Base *bp = new Derived[size];
+This will produce segmentation fault. We need to do the following:
+    Base **bpp = new Base*[size];
+    for (std::size_t el = 0; el != size; ++el)
+        bpp[el] = new Derived;
+In this manner we create a pointer to size amount of pointers to the
+Base class. Theneach pointer of the Base class points to a Derived object
+in this manner we can then use the pointer to pointer as an array of derived
+objects.
