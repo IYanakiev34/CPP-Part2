@@ -1,0 +1,10 @@
+As explained in slide 19 of the lecture when multiple
+classes need to have common base class the base class could
+merely define an enum, which is the exact situation in our case.
+This is known as escalation. For brievity we have removed the
+overloaded operators in the msg enum and the show function. The
+interfaces we have provided are minimal just to show an example.
+Since we also know that the Handler and Processor classes must only
+have availability to the enum we then use private inheritance. The
+reason for this is because the base class does not have any virtual
+members.

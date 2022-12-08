@@ -1,5 +1,6 @@
-#include "26/base26.h"
-#include "26/derived26.h"
+#include "base26.h"
+#include "derived26.h"
+#include <iostream>
 
 Base **derivedFactory(std::size_t size)
 {

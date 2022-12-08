@@ -1,5 +1,5 @@
-#include "25/base.h"
-#include "25/derived.h"
+#include "base.h"
+#include "derived.h"
 #include "message.h"
 
 int main(int argc, char **argv)
