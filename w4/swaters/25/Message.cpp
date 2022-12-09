@@ -3,3 +3,13 @@
 //
 
 #include "Message.h"
+
+Message::Message(Base &base)
+{
+    basePtr = &base;
+}
+
+void Message::show(std::ostream &out) const
+{
+    basePtr->hello(out);
+}

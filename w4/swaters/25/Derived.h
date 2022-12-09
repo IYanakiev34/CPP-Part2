@@ -6,9 +6,15 @@
 #define INC_25_DERIVED_H
 
 
-class Derived
-{
+#include "Base.h"
 
+class Derived : public Base
+{
+    std::string str;
+public:
+    explicit Derived(std::string str);
+private:
+    void vHello(std::ostream& out) const override;
 };
 
 

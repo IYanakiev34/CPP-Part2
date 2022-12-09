@@ -1,0 +1,6 @@
+How many Vtables and how many v_pointers are defined by the program? Explain your answer.
+    There are 2 Vtables and 2 v_pointers. There are three classes, but only two of them
+    (Base and Derived) have virtual functions and Vtables by extension. Message is just
+    a normal class, so it doesn't have a Vtable (and its instances don't have v_pointers).
+    Instances of Base and Derived have v_pointers because they have Vtables. There is one
+    instance of Base and one instance of Derived, so there are two v_pointers.

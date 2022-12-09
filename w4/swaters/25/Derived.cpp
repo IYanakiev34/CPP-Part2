@@ -3,3 +3,15 @@
 //
 
 #include "Derived.h"
+
+#include <utility>
+
+Derived::Derived(std::string str)
+        : str(std::move(str)) // suggested by clang tidy
+{}
+
+void Derived::vHello(std::ostream &out) const
+{
+    out << str << '\n';
+}
+
