@@ -1,17 +1,20 @@
-Whenw e create a Base22 class object the compiler allocates
-some amount of memory to fit that object in and instantiates
-the members of the class. Since we do not have polymorphism
-in order to call derived function hello from the base class
-it is clear that we need to perform some sort of assignment.
-However, assignment from base class object to a derive class
-object is problematic. It is possible that some data might be
-missing. Although derived class objects are bas class objects the
-reverse does not hold true. In order to call the Derived::hello
-in the function caller, we will need to perform this exact assignment,
-which is usually denied by the compiler. What we do however is to
-perform a static_cast<Derived22 &>(obj) this allows us to downcast
-the base class to a derived class and assign it. Thus being able to call
-the function hello of the derived class. However, as stated above this is
-bad practice due to the fact the we might end up with missing data. Another
-possible implementation would be to overload the assignment operator to accept
-an object of type Base22, then it will be up to us how to handle the missing data.
+Since in our function caller we pass a reference to
+the base class, technically we can use only base class
+functions. This is due to the fact that references are
+really pointers in disguise. As stated in the book:
+    "When a function is called using a pointer to an object, 
+    then the type of the pointer (and not the type of
+    the object) determines which member functions are available 
+    and can be executed."
+
+In order to execute the functionality provided by the derived
+class we will need to create a variable of type Derived * and
+perform a static_cast to the function parameter. This of course
+is not safe and this is where the real problem is. If the type
+of the object passed to the function is really a derived class
+well then  everything should work as expected, however if the 
+type is lets say of the type of the base class, unexpected behavior
+might occur. This could happen due to slicing depending on the
+member variables inside the derived class and how the functions
+inside the derived class depend on those variables there exists
+a possibility where we receive undesirable behavior due to slicing.

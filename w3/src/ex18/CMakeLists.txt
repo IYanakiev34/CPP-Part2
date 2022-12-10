@@ -1,1 +1,0 @@
-add_library(Ex18 base.cc derived.cc)

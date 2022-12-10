@@ -21,9 +21,12 @@ int main(int argc, char **argv)
     std::cout << "DESTRUCTION TAKES PLACE NOW\n";
     */
 
-    Base22 obj{};
+    // We can call it with derived class
+    Derived22 derived;
+    caller(derived);
 
-    caller(obj);
-    obj.hello();
+    // We can also call it with base class
+    Base22 base;
+    caller(base);
     return 0;
 }

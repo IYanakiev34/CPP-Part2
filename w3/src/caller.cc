@@ -2,6 +2,6 @@
 
 void caller(Base22 &obj)
 {
-    Derived22 d = static_cast<Derived22 &>(obj);
-    d.hello();
+    Derived22 *dp = static_cast<Derived22 *>(&obj);
+    dp->hello();
 }
