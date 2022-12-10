@@ -1,23 +1,55 @@
-If we create a Derived object using the base/copy/move constructor
-the Base class base constructor is always called. Copy and move
-constructors are not implicitly called when constructing the Base class.
-In order for them to be called we need to explicitly call them in the 
-initializer list of the Derived respective constructor.
-    Example:
-        Derived::Derived(Derived const &other)
-            : Base(other)
-        {}
+If we create a base class that defines the default/copy/move
+constructor and a derived class again with the defaults
+constructors, we will find that no matter which derived
+constructor we use it will always use the base class default
+constructor. 
 
-If we wish to call the Base move constructor when using the Derived copy 
-and call the Base copy when using the Derived move we need to do the following:
+If we want the Derived class to call the matching Base class
+constructor we will need to explicitly do that. Example is
 
-Case call Base move when using Derived Copy:
-    Derived::Derived(Derived const &other)
-        : Base(static_cast<Derived &&>(const_cast<Derived &>(other)))
-        {}
+        Derived(Derived const &other) :
+            Base(other)
+        {
+        }
 
-Case call Base copy when using Derived Move:
-    Derived::Derived(Derived&& tmp)
-        : Base(tmp)
-        {}
-        
+        Derived(Derived &&tmp) :
+            Base(tmp)
+        {
+        }
+
+In this way if we call the derived class copy constructor we will
+also call the base class copy constructor. If we call the derived
+class move constructor we will also call the base class move 
+constructor.
+
+If we wish to call the base class move constructor from the derived
+class copy constructor and vice verse we will need to do the following:
+    Derived(Derived const &other) :
+        Base(std::move(const_cast<Derived &>(other)))
+    { 
+    }
+
+    Derived(Derived &&tmp) :
+        Base(tmp)
+    {
+    }
+
+The reason we need to perform a const_cast is because if we do not the
+copy constructor is called, since for the move construction we need a type
+Base &&tmp, not a const one. After we perform the cast we can proceed to
+move the object. For the second case where the derived move constructor
+calls the base copy we only need to pass the object.
+
+
+Our findings:
+1. If we use the default constructors only the base class default
+constructo will get called no matter what type of construction is
+used for the derived class object.
+
+2. If we want to call matching constructors we need to explicitly call
+them.
+
+3. If we want to switch the construction AKA: move/copy, copy/move we
+face more challenges we need to const cast the object before moving,
+for the copy case we just pass the tmp object and the copy constructor
+gets called.
