@@ -1,0 +1,11 @@
+The idea is to make a class visible only to factory with a default
+constructor that instantiates to the value passed to factory.
+The new class 'is' a string, so string pointers can point to it.
+Unfortunately, the defined class cannot use local variables, but it
+can use global/static variables. I initially wanted to declare a
+static variable in the factory, but it seems that the class binds to
+the first declaration of the variable, so I had to declare it in the
+global scope. I put it in an anonymous namespace to make it invisible
+outside the file. The file only contains the factory, so it doesn't
+clash with anything else. Now the class uses the global, which is
+updated on each call to factory.

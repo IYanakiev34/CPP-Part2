@@ -1,0 +1,4 @@
+#include <iostream>
+#include <string>
+
+string *factory(string const &s, size_t count);
