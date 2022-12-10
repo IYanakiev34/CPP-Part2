@@ -1,7 +1,3 @@
-//
-// Created by Alex Swaters on 12/4/2022.
-//
-
 #ifndef INC_20_STRINGREPEAT_H
 #define INC_20_STRINGREPEAT_H
 
@@ -10,7 +6,7 @@
 class StringRepeat : public std::string
 {
 public:
-    StringRepeat(size_t count, const std::string &str);
+    StringRepeat(size_t count, std::string const &str);
 };
 
 

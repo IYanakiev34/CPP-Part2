@@ -10,7 +10,7 @@
 class StringRepeat : public std::string
 {
 public:
-    StringRepeat(size_t count, const std::string &str);
+    StringRepeat(size_t count, std::string const &str);
 };
 
 

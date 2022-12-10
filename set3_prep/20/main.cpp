@@ -2,7 +2,7 @@
 #include <string>
 #include "StringRepeat.h"
 
-void printStringValue(std::string const &str)
+void printStringValue(std::string str)
 {
     std::cout << "Printing string value\n";
     std::cout << str << "\n\n";
@@ -28,13 +28,6 @@ void printStringPointer(std::string const *str)
 
 int main()
 {
-    /*
-     * Show StringRepeat used as argument in place of string as:
-     * - value
-     * - reference
-     * - rvalue reference
-     * - pointer to string
-     */
     StringRepeat strRepeat(3, "Hello ");
     printStringValue(strRepeat);
     printStringReference(strRepeat);

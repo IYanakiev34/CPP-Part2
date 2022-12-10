@@ -1,15 +1,29 @@
 For this exercise we use the class std::string as a base class,
 although that's bad practice. Why is it bad practice?
-    Reasons for inheritance (according to the slides):
-        - Private if you must inherit a protected member. However,
-        std::string has no protected members.
-        - Private if you need controlled polymorphism. However,
-        std::string has no virtual functions.
-        - Public if you need polymorphism. However, std::string has
-        no virtual functions.
+    First, there is no real reason to publicly inherit in
+    c++ for any reason besides polymorphism. String doesn't
+    have any virtual functions though. Private inheritance is
+    only suggested when you need a class with access to a protected
+    member, but string doesn't have any protected members either.
+    Next, inheritance indicates an 'is-a' relationship, so you
+    could pass your derivation to a function expecting a string,
+    but since string isn't polymorphic, you would get unexpected
+    behavior if the derivation is supposed to behave differently
+    from a string (especially problematic for the destructor).
+    You also open yourself up to the risk of slicing.
+    Conceptually, it's weird to derive string from string, since
+    inheritance concedes complexity in the form of coupling and
+    a hierarchical level expecting the derived class to be
+    sufficiently different from the base class to warrant the
+    complexity. With string, it's very difficult to imagine a
+    legitimate reason that can't be solved in a much simpler way.
+    This exercise exemplifies this point with a very contrived
+    way of calling an existing functionality. Lastly, string was
+    not designed to be derived from, as a part of the standard
+    template library.
 
 I define String inheriting std::string. I define its insert using
-std::string::insert(size_t, const std::string&) with position 0 and
+std::string::insert(size_t, std::string& const) with position 0 and
 txt as arguments. Insert returns a reference to std::string, which I
 could cast to a String reference, but I don't want to cast down a
 hierarchy, so I use a second line to return this. I define the
