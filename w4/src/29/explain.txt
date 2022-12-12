@@ -1,0 +1,77 @@
+1. Multi class hierarchy:
+
+Basic           Basic
+  -               -
+  -               -
+Derived1        Derived2
+  -                -
+    -            - 
+      -        -
+        -   -
+        Multi
+
+2. Add: cout << static_cast<Basic *>(this) << "\n";
+To multi constructor
+
+Error message: Basic is an ambiguous base of Multi
+
+Due to the fact that both Derived1 and Derived2 derive
+from the same Base class. The Multi object will have 2
+Basic objects inside it. This creates ambiguity and the
+compiler cannot decide which one to use. This is as
+ explained in the 14.5 section of the Annotations.
+
+3. In order to make the statement work we need to 
+do one of the following things:
+    static_cast<Deriv1 *>(static_cast<Basic *>(this))
+                    or
+    static_cast<Deriv2 *>(static_cast<Basic *>(this))
+
+The difference between the both methods is which Basic 
+class we use. In method one we will cast to the Basic 
+class of Deriv1 object in  case 2 we will cast to the 
+Basic class of Deriv2 object. This is because as stated
+above we have 2 occurances of Basic in the Multi object.
+
+4. If we decide to keep the statement as-is we have to 
+do something about the duplication of the Basic class.
+If we derive the Deriv1 and Deriv2 classes not using 
+only public but rather:
+    virtual public Basic
+we will end up only with one occurance of the Basic 
+class inside the Multi object which will resolve the 
+ambiguity in the statement and the compiler will be happy.
+
+5. Since we switched to virtual inheritance in the 
+Deriv1 and 2 classes, in the multi class we will 
+explicitly need to call the Basic(int val) constructor 
+in order to ensure it is the only one called. This is
+achieved the following way:
+        Multi() : Basic(10)
+        {
+            // same code
+        }
+This will output to the console:
+Basic constructor called with value: 10
+Derived 1 constructor called
+Derived 2 constructor called
+Multi constructor called
+
+6. Deriv1 constructor can easily call the Basic constructor
+expeting int using:
+    Deriv1() : Basic(10)
+    {
+        // same code
+    }
+
+However since we are using virtual inheritance if we revert
+back the Multi constructor to:
+    Multi()
+    {
+        // same code
+    }
+
+When constructing a Multi object we will ensure we call the
+Base class default constructor not the one expecing an int.
+Although in the Deriv1 we use the base constructor using int.
+

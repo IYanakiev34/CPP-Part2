@@ -1,7 +1,8 @@
-#include <iostream>
+#include "main.ih"
 
 int main(int argc, char **argv)
 {
-    std::cout << "Hello from ex 27\n";
+    Multi multi;
+
     return 0;
 }
