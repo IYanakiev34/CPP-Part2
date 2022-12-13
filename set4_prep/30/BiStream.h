@@ -4,6 +4,7 @@
 #include "BiStreamBuffer.h"
 #include <ostream>
 
+// Definitions inside the header for brievity
 class BiStream : private BiStreamBuffer, public std::ostream
 {
 public:
