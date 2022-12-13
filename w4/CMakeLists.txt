@@ -14,6 +14,7 @@ target_precompile_headers(set4 PRIVATE src/main.ih)
 target_include_directories(set4 PUBLIC
                          "${PROJECT_BIANRY_DIR}"
                          "${PROJECT_SOURCE_DIR}/src/26"
-                         "${PROJECT_SOURCE_DIR}/src/29")
+                         "${PROJECT_SOURCE_DIR}/src/29"
+                         "${PROJECT_SOURCE_DIR}/src/30")
 
 
