@@ -8,10 +8,7 @@ class Processor : private Message
     Msg d_Msg;
 
 public:
-    Processor()
-    {
-        d_Msg = Msg::DEBUG;
-    };
+    Processor();
     ~Processor() = default;
 
     void setMsg(Msg msg);

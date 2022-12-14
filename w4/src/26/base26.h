@@ -1,26 +1,17 @@
 #ifndef BASE26_H
 #define BASE26_H
 
-#include <iostream>
+#include <iosfwd>
 class Base
 {
 public:
     Base() = default;
-    virtual ~Base()
-    {
-        std::cout << "Base destructor called\n";
-    }
+    virtual ~Base();
 
-    void hello(std::ostream &out)
-    {
-        vHello(out);
-    }
+    void hello(std::ostream &out);
 
 private:
-    virtual void vHello(std::ostream &out)
-    {
-        out << "Hello from Base\n";
-    }
+    virtual void vHello(std::ostream &out);
 };
 
 #endif

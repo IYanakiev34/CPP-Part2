@@ -1,6 +1,6 @@
-#include "bistream.ih"
+#include "30.ih"
 
 BiStreamBuffer::BiStreamBuffer(std::ostream &one, std::ostream &two)
-    : one_(one.rdbuf()), two_(two.rdbuf())
+    : d_one(one.rdbuf()), d_two(two.rdbuf())
 {
 }

@@ -1,6 +1,18 @@
 explain.txt
 
+main.ih
+main.cc
+
+29.ih
 basic.h
+basic_ctor.cc
+basic_ctor1.cc
+
 derived1.h
+derived1_ctor.cc
+
 derived2.h
+derived2_ctor.cc
+
 multi.h
+multi_ctor.cc

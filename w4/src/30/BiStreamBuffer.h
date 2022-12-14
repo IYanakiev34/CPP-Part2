@@ -2,12 +2,19 @@
 #define BISTREAMBUFFER_H
 
 #include <streambuf>
-#include <cstddef>
 
+#include <ostream>
+
+// Derive a class from streambuf
 class BiStreamBuffer : public std::streambuf
 {
-public:
-    BiStreamBuffer();
-};
+    std::streambuf *d_one;
+    std::streambuf *d_two;
 
+public:
+    BiStreamBuffer(std::ostream &one, std::ostream &two);
+
+protected:
+    int_type overflow(int_type ch) override;
+};
 #endif

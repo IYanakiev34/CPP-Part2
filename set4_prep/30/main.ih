@@ -1,4 +1,4 @@
-#include "BiStreamBuffer.h"
 #include "BiStream.h"
+#include "BiStreamBuffer.h"
 #include <iostream>
 #include <fstream>

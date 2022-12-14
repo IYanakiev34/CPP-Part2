@@ -3,8 +3,10 @@ explain.txt
 main.ih
 main.cc
 
-bistream.ih
+30.ih
 BiStream.h
+bistream_ctor.cc
+
 BiStreamBuffer.h
-bufctor.cc
+bistreambuffer.cc
 overflow.cc

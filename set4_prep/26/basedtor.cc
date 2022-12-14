@@ -1,4 +1,4 @@
-#include "base26.h"
+#include "26.ih"
 
 Base::~Base()
 {

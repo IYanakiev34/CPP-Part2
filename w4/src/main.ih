@@ -7,3 +7,8 @@
 #include "30/BiStream.h"
 #include <iostream>
 #include <fstream>
+
+
+Base **derivedFactory(std::size_t size);
+
+void freeBasePointers(Base **bp, std::size_t size);

@@ -9,18 +9,10 @@ class Derived : public Base
     std::string d_name;
 
 public:
-    Derived() : d_name("Hello from Derived")
-    {
-    }
-    ~Derived() override
-    {
-        std::cout << "Derived destructor called\n";
-    }
+    Derived();
+    ~Derived() override;
 
 private:
-    void vHello(std::ostream &out) override
-    {
-        out << "Hello from derived\n";
-    }
+    void vHello(std::ostream &out) override;
 };
 #endif

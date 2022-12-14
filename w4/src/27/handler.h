@@ -8,10 +8,7 @@ class Handler : private Message
     Msg d_Msg;
 
 public:
-    Handler()
-    {
-        d_Msg = Msg::ALERT;
-    }
+    Handler();
     Msg getMsg();
 };
 

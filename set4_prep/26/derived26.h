@@ -9,13 +9,10 @@ class Derived : public Base
     std::string d_name;
 
 public:
-    Derived() : d_name("Hello from Derived")
-    {
-    }
+    Derived();
     ~Derived() override;
 
 private:
     void vHello(std::ostream &out) override;
 };
-
 #endif

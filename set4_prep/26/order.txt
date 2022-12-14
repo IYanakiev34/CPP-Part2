@@ -1,12 +1,12 @@
 explain.txt
 
-main.ih
+26.ih
 base26.h
-derived26.h
+base_hello.cc
+base_vHello.cc
+basedtor.cc
 
-derived_factory.cc
-main.cc
-base_dtor.cc
-base_vhello.cc
-derived_dtor.cc
+derived26.h
 derived_vhello.cc
+derivedctor.cc
+deriveddtor.cc

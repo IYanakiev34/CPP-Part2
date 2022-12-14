@@ -7,11 +7,7 @@
 class Multi : public Deriv1, public Deriv2
 {
 public:
-    Multi() : Basic(10)
-    {
-        std::cout << static_cast<Basic *>(this) << "\n";
-        std::cout << "Multi constructor called\n";
-    };
+    Multi();
 };
 
 #endif

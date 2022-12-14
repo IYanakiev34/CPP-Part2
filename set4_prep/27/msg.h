@@ -3,7 +3,7 @@
 
 class Message
 {
-public:
+protected:
     enum Msg
     {
         NONE = 0,
