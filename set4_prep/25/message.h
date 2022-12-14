@@ -6,17 +6,19 @@
 
 class Message
 {
-    Base *bp;
+    Base *d_bp;
 
 public:
-    Message(Base &other) : bp(&other)
+    explicit Message(Base &other) : d_bp(&other)
     {
     }
 
-    void show(std::ostream &out)
-    {
-        bp->hello(out);
-    }
+    void show(std::ostream &out); // inlined this
 };
+
+inline void Message::show(std::ostream &out)
+{
+    d_bp->hello(out);
+}
 
 #endif

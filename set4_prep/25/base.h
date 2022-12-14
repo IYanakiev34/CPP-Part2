@@ -1,4 +1,3 @@
-//JB: 0
 #ifndef BASE_H
 #define BASE_H
 
@@ -6,18 +5,18 @@
 
 class Base
 {
-    // JB: This class is not suitable as a base class.
 public:
     Base() = default;
-    void hello(std::ostream &out)
-    { //JB: ICI
-        vHello(out);
-    }
+    virtual ~Base(); // made this a suitable base class
+    void hello(std::ostream &out); // inlined this
 
 private:
-    virtual void vHello(std::ostream &out)
-    {
-        out << "Hello from base\n";
-    }
+    virtual void vHello(std::ostream &out); // moved def to base_vhello.cc
 };
+
+void Base::hello(std::ostream &out)
+{
+    vHello(out);
+}
+
 #endif

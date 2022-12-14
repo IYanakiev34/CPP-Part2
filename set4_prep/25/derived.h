@@ -14,9 +14,6 @@ public:
     }
 
 private:
-    void vHello(std::ostream &out) override
-    {
-        out << d_name << "\n";
-    }
+    void vHello(std::ostream &out) override; // moved to derived_vhello.cc
 };
 #endif

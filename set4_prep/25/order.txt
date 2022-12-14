@@ -2,5 +2,7 @@ explain.txt
 
 main.cc
 base.h
+base_vhello.cc
 derived.h
+derived_vhello.cc
 message.h
