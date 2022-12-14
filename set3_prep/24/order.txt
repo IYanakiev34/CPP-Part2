@@ -2,6 +2,4 @@ explain.txt
 
 main.ih
 main.cc
-
-base.h
-derived.h
+factory.cc
