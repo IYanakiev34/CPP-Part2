@@ -1,6 +1,0 @@
-explain.txt
-
-basic.h
-derived1.h
-derived2.h
-multi.h

@@ -1,2 +1,3 @@
 Set: Set3
 Authors: Ivan Yanakiev, Alex Swaters
+Rater: MK

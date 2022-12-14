@@ -1,1 +1,0 @@
-Implemented an abstract base class called Fork.
