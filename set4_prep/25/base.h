@@ -1,4 +1,3 @@
-//JB: 0
 #ifndef BASE_H
 #define BASE_H
 
@@ -6,11 +5,10 @@
 
 class Base
 {
-    // JB: This class is not suitable as a base class.
 public:
     Base() = default;
     void hello(std::ostream &out)
-    { //JB: ICI
+    {
         vHello(out);
     }
 
