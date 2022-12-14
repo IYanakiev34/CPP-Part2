@@ -1,3 +1,5 @@
+//JB: 0
+//JB: Because ICI.
 #ifndef BASIC_H
 #define BASIC_H
 
@@ -5,6 +7,7 @@
 #include <iostream>
 class Basic
 {
+    //JB: Not suitable as polymorhpic base.
 public:
     Basic()
     {

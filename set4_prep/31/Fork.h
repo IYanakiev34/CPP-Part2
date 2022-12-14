@@ -1,3 +1,4 @@
+//JB: 0
 #ifndef FORK_INCLUDED_H
 #define FORK_INCLUDED_H
 
@@ -9,7 +10,7 @@ class Fork
     pid_t d_pid;
 
 public:
-    virtual ~Fork();
+    virtual ~Fork(); //JB: :-)
 
     void fork();
 
@@ -27,3 +28,6 @@ inline pid_t Fork::pid() const
 }
 
 #endif
+/* JB:
+   What does it even mean to copy a Fork object?
+ */

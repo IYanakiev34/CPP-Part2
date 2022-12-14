@@ -11,7 +11,7 @@ public:
     // Constructor takes two ostream objects
     BiStream(std::ostream &one, std::ostream &two) : BiStreamBuffer(one, two),
                                                      std::ostream(this)
-    {
+    { //JB: ICI
     }
 };
 

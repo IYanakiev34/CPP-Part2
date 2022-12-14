@@ -6,8 +6,8 @@ class Base
 {
 public:
     Base() = default;
-    virtual ~Base()
-    {
+    virtual ~Base() //JB: This one *is* suitable as a base class.
+    { //JB: ICI
         std::cout << "Base destructor called\n";
     }
 
