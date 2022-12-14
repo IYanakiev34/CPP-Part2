@@ -1,0 +1,8 @@
+In order to solve the problem of sorting without using 
+the built in sort function, we use the std::multiset<T>.
+There the elements have natural sorting due to key comparison
+function Compare, std::string has one. We chose std::multiset<T>
+also because we might have 2 of the same words so we do not want
+to forbid this scenario. Althouhg not mentioned in the exercise,
+we decided to add functionality for command line parameter which
+will specify the amount of words being scanned.
