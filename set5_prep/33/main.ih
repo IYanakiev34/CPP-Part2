@@ -1,0 +1,7 @@
+#include <iostream>
+#include <set>
+#include <string>
+
+void scanSet(std::multiset<std::string> &words, std::size_t size);
+
+void printSet(std::multiset<std::string> &words);

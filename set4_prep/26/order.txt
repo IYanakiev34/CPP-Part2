@@ -1,5 +1,10 @@
 explain.txt
 
+main.ih
+main.cc
+freeBasePointers.cc
+derived_factory.cc
+
 26.ih
 base26.h
 base_hello.cc
