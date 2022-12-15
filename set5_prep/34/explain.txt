@@ -1,0 +1,6 @@
+For this exercise we will use the std::map
+container. This is due to fact that keys in
+the map are ordered. We can use the string (word)
+as a key and how many times we have seen it as a value.
+Before we insert we only have to check if we already
+have the word and if so increment the count.

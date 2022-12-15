@@ -4,7 +4,11 @@ project(Set5 VERSION 1.0 LANGUAGES CXX)
 
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED True)
-add_executable(set5 src/main.cc src/printset.cc src/scanset.cc)
+add_executable(set5 src/main.cc 
+            src/printset.cc 
+            src/scanset.cc
+            src/scanmap.cc
+            src/printmap.cc)
 
 
 target_include_directories(set5 PRIVATE
