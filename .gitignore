@@ -1,6 +1,6 @@
 w1/dev/build/
 *.mov
-
+*.vscode
 # Compiled Object files
 **/.DS_Store
 *.slo

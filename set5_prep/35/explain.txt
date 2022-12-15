@@ -1,0 +1,7 @@
+By refactoring the std::string * to a
+std::vector<std::string> we benefit from
+removing the destructor,copy/move operations.
+This is due to the fact that that our class does
+no longer need to manage memmory. The vector manages
+the memory for us. Since we do not store pointer inside
+of it. 

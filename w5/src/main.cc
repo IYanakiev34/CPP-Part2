@@ -30,6 +30,7 @@ int main(int argc, char **argv)
     printSet(words);
     */
 
+    /* Exercise 34
     if (argc < 2)
     {
         usage();
@@ -49,5 +50,7 @@ int main(int argc, char **argv)
     scanMap(words, wordCount);
 
     printMap(words);
+    */
+
     return 0;
 }

@@ -13,3 +13,6 @@ void printSet(std::multiset<std::string> &words);
 void scanMap(std::map<std::string,int> &words,std::size_t size);
 
 void printMap(std::map<std::string,int> &words);
+
+// 35
+#include "35/strings.h"
