@@ -1,0 +1,8 @@
+The key to this exercise is using a set. Sets are sorted in C++,
+so after inserting the input from cin into the set, you can
+iterate through the set and print out the elements, and they will
+be in sorted order.
+
+I took a liberty and included "!" as an escape word, so that
+you can enter a just "!" and the program will stop reading input.
+It will also stop if there is nothing left to read.
