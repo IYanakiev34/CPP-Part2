@@ -1,0 +1,10 @@
+This exercise is similar to the last one. This time though, you
+need to track multiple occurrences. I was tempted to use a
+multiset because it's just a set that allows duplicates. However,
+I decided that iterating over duplicates would be more challenging
+than using a map. The keys of a map are sorted just like in a set,
+but each key has an associated value. Then as the value, I use an
+integer to count the number of occurrences. If the value is not
+initialized, it is first assigned its default value of 0 and then
+incremented. Then using almost the same code as the last exercise,
+I accept the input and print the results.
