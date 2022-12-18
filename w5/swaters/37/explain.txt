@@ -1,0 +1,30 @@
+I load from test.txt in this folder using fstream. I use an unordered
+set to find the unique words (faster than set or vector with checking)
+and then copy them to a vector. As instructed, I add another word to
+the end of the vector, printing its size and capacity before and after.
+Before, the size matches the capacity, but after, the capacity is twice
+the original size. This is because the vector uses exponential resizing
+to reduce the number of reallocations. The size is of course only one
+more.
+
+Vector includes a member shrink_to_fit() that reduces the capacity to
+the size. However, shrink_to_fit() is "non-binding", and the implementor
+is not guaranteed to shrink capacity to size. Also, from the perspective
+of exposing standard functions to have a readily understandable interface,
+swap is better than wrapping shrink_to_fit() in a member function.
+
+I can use swap to create a new vector with the same elements as the
+original, and then swap it with the original. The compiler initializes
+the new vector with capacity equal to size. Thus, after the swap, the
+capacity is equal to the size, and this is guaranteed.
+
+After implementing swap in my Dummy class, I use Dummy{dummy}.swap(dummy);
+(which calls the vector swap) to make the capacity equal size.
+
+The following is the output of main:
+    Size: 69
+    Capacity: 69
+    Size: 70
+    Capacity: 138
+    Size: 70
+    Capacity: 70
