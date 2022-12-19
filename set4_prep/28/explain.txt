@@ -1,0 +1,9 @@
+Implemented the overrided underflow method.
+First check if buffer exists. If it does not, I determine
+the maximal size of the buffer given the random range.
+That way the buffer will suffice for any number generated 
+and will not have to be adjusted when new numbers are produced. 
+Then a value is produced until said value falls into the accepted
+range. At that point the number is converted to a string and copied 
+onto the buffer. Lastly, the next character pointed to by the buffer 
+is returned.
