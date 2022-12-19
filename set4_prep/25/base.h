@@ -14,7 +14,7 @@ private:
     virtual void vHello(std::ostream &out); // moved def to base_vhello.cc
 };
 
-void Base::hello(std::ostream &out)
+inline void Base::hello(std::ostream &out)
 {
     vHello(out);
 }
