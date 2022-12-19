@@ -2,9 +2,8 @@
 #include "derived.h"
 #include "message.h"
 
-int main(int argc, char **argv) //JB: Unused params.
+int main()
 {
-
     Base bp;
 
     std::string const name{"Hi I am Ivan"};
