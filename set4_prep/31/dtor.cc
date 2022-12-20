@@ -1,5 +1,3 @@
 #include "fork.ih"
 
-Fork::~Fork()
-{
-}
+Fork::~Fork() = default;
