@@ -3,4 +3,4 @@ Dummy.h
 main.ih 
 uniqueFileWords.cc 
 main.cpp
--text.txt
+-test.txt
