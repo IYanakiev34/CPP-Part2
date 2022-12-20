@@ -6,7 +6,7 @@ int main()
 {
     Base bp;
 
-    std::string const name{"Hi I am Ivan"};
+    std::string name{"Hi I am Ivan"};
     Derived der(name);
 
     Message msg1(bp);
