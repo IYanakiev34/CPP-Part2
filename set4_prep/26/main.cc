@@ -30,6 +30,4 @@ int main(int argc, char **argv)
 
     // Free memory
     freeBasePointers(bp, sizeOfArray);
-
-    return 0;
 }
