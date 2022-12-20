@@ -1,4 +1,6 @@
-#include <cstring>
+#ifndef SPLIT_H
+#define SPLIT_H
+
 #include <vector>
 
 class Split
@@ -7,3 +9,5 @@ class Split
 public:
     Split(int &argc, char **&argv);
 };
+
+#endif

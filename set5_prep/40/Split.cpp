@@ -1,11 +1,11 @@
-#include "Split.h"
+#include "split.ih"
 
 Split::Split(int &argc, char **&argv)
         :
         d_argv{argv, argv + argc}
 {
-    for (size_t idx = 0; idx != argc; ++idx)
-    {
+    for (int idx = 0; idx != argc; ++idx)
+    { // using int idx to avoid signed/unsigned comparison
         char *token = strtok(argv[idx], " ");
         if (token)
         {
