@@ -1,7 +1,7 @@
 explain.txt
 
 strings.ih
-strigns.h
+strings.h
 
 add.cc
 at.cc

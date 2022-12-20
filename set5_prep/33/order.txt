@@ -1,3 +1,7 @@
 explain.txt
 
 main.cc
+main.ih
+
+printset.cc
+scanset.cc
