@@ -1,0 +1,15 @@
+The goal of this exercise is to split arguments around spaces.
+This would be easy if I could use new, since I would just point
+argv to a new char**. Instead, I use a vector<char*> to store
+the new version of argv. I need to attach the vector to an object
+because it would go out of scope if defined in a function.
+The trouble is sharing the memory without using new. This can be
+done by using the data() member of vector, which I assign to argv.
+Then, all that remains is to use strtok to split the arguments.
+Using vector's push_back method, I can add the new arguments to
+the vector without using new. The memory allocated to the vector
+is automatically freed when the object goes out of scope, so it
+does not leak.
+
+I was able to replicate the expected output, and used valgrind to
+check for memory leaks. I did not find any on the given input.
