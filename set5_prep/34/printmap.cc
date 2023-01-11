@@ -1,9 +1,7 @@
 #include "main.ih"
 
-void printMap(std::map<std::string, int> &words)
+void printMap(std::map<std::string, int> const &words, std::ostream &out)
 {
-    std::map<std::string, int>::const_iterator wordIter = words.cbegin();
-
-    for (; wordIter != words.cend(); ++wordIter)
-        std::cout << wordIter->first << " : " << wordIter->second << "\n";
+    for (auto const &word : words)
+        out << word.first << ":" << word.second << "\n";
 }

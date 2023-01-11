@@ -8,24 +8,16 @@ void usage()
 
 int main(int argc, char **argv)
 {
-
-    if (argc < 2)
-    {
-        usage();
-        return 1;
-    }
-    std::string arg{argv[1]};
-    if (arg == "-h")
+    if (argc < 2 || (argc == 2 && argv[1] == "-h"))
     {
         usage();
         return 1;
     }
 
-    std::size_t wordCount = std::stoull(argv[1]);
+    std::size_t const wordCount = std::stoull(argv[1]);
     std::multiset<std::string> words;
 
-    scanSet(words, wordCount);
+    scanSet(words, wordCount, std::cin);
 
-    printSet(words);
-    return 0;
+    printSet(words, std::cout);
 }

@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 class Strings
 {
@@ -22,6 +21,7 @@ public:
 
     Strings &operator+=(std::string const &string);
     std::string &operator[](std::size_t idx);
+    std::string const &operator[](std::size_t idx) const;
 };
 
 inline std::size_t Strings::size()
@@ -45,6 +45,11 @@ inline void Strings::reserve(std::size_t reserveSpace)
 }
 
 inline std::string &Strings::operator[](std::size_t idx)
+{
+    return d_str[idx];
+}
+
+inline std::string const &Strings::operator[](std::size_t idx) const
 {
     return d_str[idx];
 }

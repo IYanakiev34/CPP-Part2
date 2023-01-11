@@ -1,5 +1,5 @@
 #include "strings.ih"
 
-Strings::Strings() : Strings(10)
+Strings::Strings()
 {
 }

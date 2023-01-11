@@ -2,6 +2,5 @@
 #include <string>
 #include <map>
 
-void scanMap(std::map<std::string,int> &words,std::size_t size);
-
-void printMap(std::map<std::string,int> &words);
+void scanMap(std::map<std::string,int> &words,std::size_t const size, std::istream &in);
+void printMap(std::map<std::string,int> const &words, std::ostream &out);

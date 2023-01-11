@@ -1,8 +1,7 @@
 #include "main.ih"
 
-void printSet(std::multiset<std::string> &words)
+void printSet(std::multiset<std::string> const &words, std::ostream &out)
 {
-    std::multiset<std::string>::const_iterator wordsIter = words.cbegin();
-    for (; wordsIter != words.cend(); ++wordsIter)
-        std::cout << *wordsIter << "\n";
+    for (std::string const &i : words)
+        out << i << "\n";
 }

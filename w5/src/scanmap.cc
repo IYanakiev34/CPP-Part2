@@ -1,21 +1,17 @@
 #include "main.ih"
 
-void scanMap(std::map<std::string, int> &words, std::size_t size)
+void scanMap(std::map<std::string, int> &words, std::size_t const size, std::istream &in)
 {
-    std::string tmp;
-    // Postfix otherwise will scan one elements less
-    while (size-- > 0)
-    {
-        std::cin >> tmp;
-        std::map<std::string, int>::iterator wordsIter = words.find(tmp);
+    std::string currWord{};
 
-        if (wordsIter != words.end())
-        {
-            wordsIter->second++;
-        }
+    for (std::size_t idx = 0; idx != size; ++idx)
+    {
+        in >> currWord;
+        std::map<std::string, int>::iterator wordIter = words.find(currWord);
+
+        if (wordIter != words.end())
+            ++wordIter->second;
         else
-        {
-            words.insert(std::pair<std::string, int>{std::move(tmp), 1});
-        }
+            words.insert({currWord, 1});
     }
 }

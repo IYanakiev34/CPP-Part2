@@ -9,48 +9,35 @@ void usage()
 int main(int argc, char **argv)
 {
     // Exercise 33
-    /*
-    if (argc < 2)
-    {
-        usage();
-        return 1;
-    }
-    std::string arg{argv[1]};
-    if (arg == "-h")
+    /* I THINK I FIXED HIS COMPLAINTS  although some of them were pretty stupid
+    if (argc < 2 || (argc == 2 && argv[1] == "-h"))
     {
         usage();
         return 1;
     }
 
-    std::size_t wordCount = std::stoull(argv[1]);
+    std::size_t const wordCount = std::stoull(argv[1]);
     std::multiset<std::string> words;
 
-    scanSet(words, wordCount);
+    scanSet(words, wordCount, std::cin);
 
-    printSet(words);
+    printSet(words, std::cout);
     */
 
-    /* Exercise 34
-    if (argc < 2)
+    // Exercise 34
+    // I think i fixed his issues for this one yet again some of them useless but whatever
+    /*
+    if (argc < 2 || (argc == 2 && argv[1] == "-h"))
     {
         usage();
         return 1;
     }
 
-    std::string arg{argv[1]};
-    if (arg == "-h")
-    {
-        usage();
-        return 1;
-    }
-
-    std::size_t wordCount = std::stoull(argv[1]);
+    std::size_t const wordCount = std::stoull(argv[1]);
     std::map<std::string, int> words;
 
-    scanMap(words, wordCount);
+    scanMap(words, wordCount, std::cin);
 
-    printMap(words);
+    printMap(words, std::cout);
     */
-
-    return 0;
 }

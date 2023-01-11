@@ -8,24 +8,16 @@ void usage()
 
 int main(int argc, char **argv)
 {
-    if (argc < 2)
+    if (argc < 2 || (argc == 2 && argv[1] == "-h"))
     {
         usage();
         return 1;
     }
 
-    std::string arg{argv[1]};
-    if (arg == "-h")
-    {
-        usage();
-        return 1;
-    }
-
-    std::size_t wordCount = std::stoull(argv[1]);
+    std::size_t const wordCount = std::stoull(argv[1]);
     std::map<std::string, int> words;
 
-    scanMap(words, wordCount);
+    scanMap(words, wordCount, std::cin);
 
-    printMap(words);
-    return 0;
+    printMap(words, std::cout);
 }
