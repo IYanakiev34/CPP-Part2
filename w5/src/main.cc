@@ -6,6 +6,12 @@ void usage()
     std::cout << info << "\n";
 }
 
+void usage1()
+{
+    char const info[] = R"(Please specify a file!)";
+    std::cout << info << "\n";
+}
+
 int main(int argc, char **argv)
 {
     // Exercise 33

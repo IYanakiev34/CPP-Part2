@@ -2,6 +2,7 @@
 #include <set>
 #include <string>
 
+
 void scanSet(std::multiset<std::string> &words, std::size_t const size, std::istream &in);
 
 void printSet(std::multiset<std::string> const &words,std::ostream &out);
