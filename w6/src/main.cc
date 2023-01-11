@@ -53,4 +53,20 @@ int main(int argc, char **argv)
     std::copy(argv + 1, argv + argc, std::ostream_iterator<char const *>(std::cout, " "));
     std::cout << std::endl;
     */
+
+    // Exercise 43
+    /* It's basically done I only have to abstract it as a function
+    std::vector<size_t> data{1, 2, 3, 3, 3, 4, 1, 4, 2, 6};
+
+    int res = 0;
+    std::for_each(data.begin(), data.end(),
+                  [&](auto a) mutable
+                  {
+                      int count = std::count(data.begin(), data.end(), a);
+                      if (count > 1)
+                          res += count - 1;
+                      data.erase(std::remove(data.begin(), data.end(), a), data.end());
+                  });
+    std::cout << "Res: " << res << "\n";
+    */
 }
