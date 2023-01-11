@@ -1,0 +1,2 @@
+#include "strings_smart.h"
+#include <stdexcept>

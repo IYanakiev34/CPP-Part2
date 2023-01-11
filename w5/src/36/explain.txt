@@ -1,0 +1,6 @@
+We wrap the data inside the vector withing a shared pointer.
+This allows us to still not handle new/delete, we only
+need to modidy a few things in the calss namely the
+constructor that takes a word, we need to then instantiate
+the container with but wrap it inside a shared_ptr object. We
+also need to slightly modify the [] operator.

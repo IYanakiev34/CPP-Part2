@@ -14,4 +14,7 @@ void scanMap(std::map<std::string,int> &words,std::size_t const size, std::istre
 void printMap(std::map<std::string,int> const &words, std::ostream &out);
 
 // 35
-#include "35/strings.h"
+#include "strings.h"
+
+// 36 
+#include "strings_smart.h"

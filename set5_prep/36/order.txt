@@ -1,0 +1,10 @@
+explain.txt
+
+smart_str.ih
+strings_smart.h
+
+add.cc
+at.cc
+smart_str.cc
+smart_str1.cc
+smart_str2.cc
