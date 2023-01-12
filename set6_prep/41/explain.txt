@@ -1,0 +1,12 @@
+The solution we offer is the following.
+The FillUnique object will handle the filling
+of the vector, in the fill function it will
+create the Random object which will create the actual
+values, and then use the function storeValue to actually
+store the value in the vector. In the main function
+we just need to pass as arguments the number of random
+number we wish to generate and their bounds. We also
+need one vector object and one FillUnique object.
+Then we proceed to call fill passing in the command
+line arguments and the vector, and then our vector
+will be filled.

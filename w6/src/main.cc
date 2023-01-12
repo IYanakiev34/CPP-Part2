@@ -11,6 +11,22 @@ void usage()
     std::cout << info << "\n";
 }
 
+size_t multiples(std::vector<size_t> const &data)
+{
+    std::vector<size_t> tmp(data);
+    size_t res = 0;
+
+    std::for_each(tmp.begin(), tmp.end(),
+                  [&](auto a) mutable
+                  {
+                      int count = std::count(tmp.begin(), tmp.end(), a);
+                      if (count > 1)
+                          res += count - 1;
+                      tmp.erase(std::remove(tmp.begin(), tmp.end(), a), tmp.end());
+                  });
+    return res;
+}
+
 int main(int argc, char **argv)
 {
 
@@ -55,18 +71,7 @@ int main(int argc, char **argv)
     */
 
     // Exercise 43
-    /* It's basically done I only have to abstract it as a function
     std::vector<size_t> data{1, 2, 3, 3, 3, 4, 1, 4, 2, 6};
 
-    int res = 0;
-    std::for_each(data.begin(), data.end(),
-                  [&](auto a) mutable
-                  {
-                      int count = std::count(data.begin(), data.end(), a);
-                      if (count > 1)
-                          res += count - 1;
-                      data.erase(std::remove(data.begin(), data.end(), a), data.end());
-                  });
-    std::cout << "Res: " << res << "\n";
-    */
+    std::cout << multiples(data) << " multiples were found\n";
 }

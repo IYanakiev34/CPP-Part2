@@ -1,0 +1,5 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+size_t multiples(std::vector<size_t> const &data);

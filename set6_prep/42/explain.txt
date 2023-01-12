@@ -1,0 +1,6 @@
+By using the std::sort algorithm we can pass
+in the first program argument anf the last (which
+will be just the first + the argc), we then only need
+a lambda comparison function in order to sort them. To
+print we just need to call std::copy with the ostream_iterator
+object and pass in a delimeter.
