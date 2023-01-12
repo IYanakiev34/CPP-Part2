@@ -1,0 +1,16 @@
+In order to solve this task we need to create a POD
+to hold the student. We then overload the extraction
+and insertion operator. We first check if we have
+proper number of arguments and if so we read from the
+file specified. If we cannot open the file we notify the
+user. We then proceed to actually store the students from
+the file in a vector using the overloaded operator. After
+that we sort them by their last name. Then we create
+the indice vector which for now will just store the
+original indices being:
+    0,1,2,3,4,5
+We then sort this vector using indirectly the data vector
+as a source of truth. We then proceed to print the original
+data vector since it is already sorted by last name, and
+then print the data vector again however this time 
+according to the indices stored in the indice vector.

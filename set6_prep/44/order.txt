@@ -1,0 +1,17 @@
+explain.txt
+
+-text.txt
+
+student/student.h
+student/ctor.cc
+student/ex.cc
+student/ins.cc
+
+main.ih
+read.cc
+create_ind.cc
+sort_names.cc
+sort_number.cc
+writeNames.cc
+writeNrs.cc
+main.cc
