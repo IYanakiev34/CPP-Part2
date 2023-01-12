@@ -85,6 +85,9 @@ int main(int argc, char **argv)
     std::copy(n.begin(), n.end(), std::ostream_iterator<unsigned>(std::cout, " "));
     std::cout << std::endl;
     */
+
+    // Exercise 44
+    /*
     std::vector<Student> students;
     if (argc < 2)
     {
@@ -118,4 +121,5 @@ int main(int argc, char **argv)
     std::cout << "Sorted by numbers\n";
     writeNrs(std::cout, students, indices);
     std::cout << std::endl;
+    */
 }
