@@ -3,5 +3,7 @@
 #include <fstream>
 #include <algorithm>
 #include <iterator>
+#include <functional>
 #include "Random.h"
 #include "FillUnique.h"
+#include "iota_wrapper.h"

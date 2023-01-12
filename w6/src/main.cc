@@ -71,7 +71,18 @@ int main(int argc, char **argv)
     */
 
     // Exercise 43
-    std::vector<size_t> data{1, 2, 3, 3, 3, 4, 1, 4, 2, 6};
+    /*std::vector<size_t> data{1, 2, 3, 3, 3, 4, 1, 4, 2, 6};
 
     std::cout << multiples(data) << " multiples were found\n";
+    */
+
+    // Exercise 47
+    /*
+    IotaWrapper wrap(0, [](unsigned const &n)
+                     { return n + 2; });
+    std::vector<unsigned> n(10);
+    std::iota(n.begin(), n.end(), wrap);
+    std::copy(n.begin(), n.end(), std::ostream_iterator<unsigned>(std::cout, " "));
+    std::cout << std::endl;
+    */
 }
