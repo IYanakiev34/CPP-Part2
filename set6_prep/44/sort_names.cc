@@ -3,11 +3,14 @@
 void sortByLastNames(std::vector<Student> &students)
 {
     // Sort by names
-    std::sort(students.begin(), students.end(), [](Student &a, Student &b) -> bool
+    std::sort(students.begin(), students.end(),
+              [](Student &student1, Student &student2) -> bool
               {
-                int val = strcasecmp(a.getLastName().c_str(), b.getLastName().c_str()); 
-                if (val < 0)
-                    return true;
-                
-                return false; });
+                  int val = strcasecmp(student1.lastName().c_str(),
+                                       student2.lastName().c_str());
+                  if (val < 0)
+                      return true;
+
+                  return false;
+              });
 }

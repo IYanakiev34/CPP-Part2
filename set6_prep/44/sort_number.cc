@@ -2,9 +2,11 @@
 
 void sortByNumber(std::vector<Student> &students, std::vector<int> &indices)
 {
-    std::sort(indices.begin(), indices.end(), [&](int const &a, int const &b) -> bool
+    std::sort(indices.begin(), indices.end(),
+              [&](int const &idx1, int const &idx2) -> bool
               {
-        if (students[a].getNumber() < students[b].getNumber())
-            return true;
-        return false; });
+                  if (students[idx1].number() < students[idx2].number())
+                      return true;
+                  return false;
+              });
 }

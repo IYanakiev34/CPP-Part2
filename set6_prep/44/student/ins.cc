@@ -3,6 +3,7 @@
 
 std::ostream &operator<<(std::ostream &out, Student const &obj)
 {
-    out << obj.d_Name << " " << obj.d_LastName << " " << obj.d_Number << " " << obj.d_Grade << "\n";
+    out << obj.d_name << " " << obj.d_lastName << " " << obj.d_number << " "
+        << obj.d_grade << "\n";
     return out;
 }

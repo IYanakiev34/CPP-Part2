@@ -6,41 +6,48 @@
 
 class Student
 {
-    std::string d_Name;
-    std::string d_LastName;
-    unsigned int d_Number;
-    float d_Grade;
+    std::string d_name;
+    std::string d_lastName;
+    unsigned int d_number;
+    float d_grade;
 
 public:
     Student() = default;
-    Student(std::string const &name, std::string const &lastName, unsigned int number, float grade);
 
-    std::string getName();
-    std::string getLastName();
-    unsigned int getNumber();
-    float getGrade();
+    Student(std::string const &name, std::string const &lastName,
+            unsigned int number, float grade);
+
+    std::string name() const;
+
+    std::string lastName() const;
+
+    unsigned int number() const;
+
+    float grade() const;
 
     friend std::istream &operator>>(std::istream &in, Student &obj);
+
     friend std::ostream &operator<<(std::ostream &out, Student const &obj);
 };
 
-inline std::string Student::getName()
+inline std::string Student::name() const
 {
-    return d_Name;
+    return d_name;
 }
 
-inline std::string Student::getLastName()
+inline std::string Student::lastName() const
 {
-    return d_LastName;
+    return d_lastName;
 }
 
-inline unsigned int Student::getNumber()
+inline unsigned int Student::number() const
 {
-    return d_Number;
+    return d_number;
 }
 
-inline float Student::getGrade()
+inline float Student::grade() const
 {
-    return d_Grade;
+    return d_grade;
 }
+
 #endif
