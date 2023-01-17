@@ -2,6 +2,6 @@
 
 IotaWrapper &IotaWrapper::operator++()
 {
-    d_Value = d_Func(d_Value);
+    d_value = d_func(d_value);
     return *this;
 }

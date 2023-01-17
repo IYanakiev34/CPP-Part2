@@ -6,8 +6,8 @@
 class IotaWrapper
 {
     using IotaFunc = std::function<unsigned(unsigned const &n)>;
-    unsigned d_Value;
-    IotaFunc d_Func;
+    unsigned d_value;
+    IotaFunc d_func;
 
 public:
     IotaWrapper() = delete;

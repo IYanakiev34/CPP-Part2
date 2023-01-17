@@ -2,5 +2,5 @@
 
 IotaWrapper::operator unsigned()
 {
-    return d_Value;
+    return d_value;
 }

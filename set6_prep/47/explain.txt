@@ -4,7 +4,7 @@ IotaWrapper class which will hold and unsigned int
 value, which will represent the current value and
 a function which will hold the function that will
 uncrement the value. The ++ operator will then
-just perform what the d_Func needs to and then return
+just perform what the d_func needs to and then return
 *this. Then in the main we just need to supply it with
 the proper function in our case
     [](unsigned const &n){return n + 2};
