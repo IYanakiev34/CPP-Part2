@@ -1,3 +1,4 @@
+explain.txt
 Vstring/Vstring.h
 Vstring/Vstring.ih
 Vstring/ctor.cpp
@@ -9,4 +10,3 @@ vowels.cpp
 main.cpp
 
 -ex_plain_txt.txt
-explain.txt
