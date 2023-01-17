@@ -1,0 +1,50 @@
+#include <memory>
+
+int main()
+{
+    std::unique_ptr<char>(new char[10]);
+}
+
+What's wrong with this program?
+    The unique_ptr is given type char, but new points to an array of char.
+Why?
+    The unique_ptr relies on the given type to destroy the object. Since 
+    it needs to destroy an array, it must call delete[], but it has to know 
+    it is operating on an array to do so. Using valgrind, I get the following:
+        Mismatched free() / delete / delete []
+    Because delete was called in place of delete [].
+How to fix it? 
+    Change the type to char[]:
+        std::unique_ptr<char[]>(new char[10]);
+    With this change the valgrind output is clean.
+
+
+Next consider this program: 
+#include <memory>
+
+int main() 
+{
+    // assign dynamically allocated strings to the 10 pointers
+    std::unique_ptr<string *>(new string *[10]);  
+}
+
+What's wrong with this program?
+    The unique_ptr is given type string*, but new points to an array of
+    string*.
+Why?
+    The unique_ptr relies on the given type to destroy the object. Since
+    it needs to destroy an array, it must call delete[], but it has to know
+    it is operating on an array to do so.
+How to fix it?
+    It's tempting to say
+        auto a = std::unique_ptr<string *[]>(new string *[10]);
+    but this is wrong. If you define one of its elements, say:
+        a[0] = new string("hello");
+    then you will have a memory leak. The reason is that the unique_ptr
+    will call delete[] on the array, but it will not call delete on the
+    individual elements. One way to fix this is to use a
+    unique_ptr to an array of unique_ptrs:
+        std::unique_ptr<std::unique_ptr<string>[]> a(
+            new std::unique_ptr<string>[10]);
+
+Overall, it is probably better to use a vector though.
