@@ -1,10 +1,10 @@
 #include "FillUnique.h"
 #include "Random.h"
-#include <iostream>
 
-void FillUnique::fill(unsigned int s, unsigned int l, unsigned int h, std::vector<int> &vec)
+void FillUnique::fill(unsigned int size, unsigned int low, unsigned int high,
+                      std::vector<int> &vec)
 {
-    Random r(l, h);
-    for (int idx = 0; idx != s; ++idx)
-        storeValue(vec, r());
+    Random random(low, high);
+    for (int idx = 0; idx != size; ++idx)
+        storeValue(vec, random());
 }
