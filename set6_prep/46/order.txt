@@ -1,0 +1,12 @@
+Vstring/Vstring.h
+Vstring/Vstring.ih
+Vstring/ctor.cpp
+Vstring/count.cpp
+Vstring/count_char.cpp
+
+main.ih
+vowels.cpp
+main.cpp
+
+-ex_plain_txt.txt
+explain.txt

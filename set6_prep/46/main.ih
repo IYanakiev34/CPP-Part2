@@ -1,0 +1,7 @@
+#include "Vstring/Vstring.h"
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <string>
+
+bool vowels(char ch, Vstring::CharMap &cmap);

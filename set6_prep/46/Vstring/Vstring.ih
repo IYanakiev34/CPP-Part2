@@ -1,0 +1,2 @@
+#include "Vstring.h"
+#include <algorithm>
