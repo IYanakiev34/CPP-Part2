@@ -42,9 +42,12 @@ How to fix it?
         a[0] = new string("hello");
     then you will have a memory leak. The reason is that the unique_ptr
     will call delete[] on the array, but it will not call delete on the
-    individual elements. One way to fix this is to use a
-    unique_ptr to an array of unique_ptrs:
-        std::unique_ptr<std::unique_ptr<string>[]> a(
-            new std::unique_ptr<string>[10]);
+    individual elements. One way to fix this is to use an array of
+    unique pointers:
+        std::unique_ptr<string> a[10];
+    Now, when you assign to an element, say:
+        a[0] = std::unique_ptr<string>(new string("hello"));
+    the unique_ptr will call delete on the string when it goes out of
+    scope and no leak will occur.
 
 Overall, it is probably better to use a vector though.
