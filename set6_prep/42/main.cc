@@ -5,20 +5,13 @@
 
 int main(int argc, char **argv)
 {
-    // Exercise 42
-    std::sort(argv + 1, argv + argc, [](auto left, auto right)
-    {
-        return std::stoi(left) < std::stoi(right);
-    });
+    std::sort(argv + 1, argv + argc, std::less<std::string>());
     std::copy(argv + 1, argv + argc,
               std::ostream_iterator<char const *>(std::cout, " "));
-    std::cout << "\n";
+    std::cout << '\n';
 
-    std::sort(argv + 1, argv + argc, [](auto left, auto right)
-    {
-        return std::stoi(left) > std::stoi(right);
-    });
+    std::sort(argv + 1, argv + argc, std::greater<std::string>());
     std::copy(argv + 1, argv + argc,
               std::ostream_iterator<char const *>(std::cout, " "));
-    std::cout << "\n";
+    std::cout << '\n';
 }
