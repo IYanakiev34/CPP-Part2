@@ -1,3 +1,4 @@
 The solution we opted for uses only STL algorithms.
-We opted for the erase/remove strategy which causes us to
-have a temp copy vector of the original data.
+We just use unique_copy to get a second vector without
+duplicates, so the number of duplicates is trivially the
+difference between the two vectors' sizes.
