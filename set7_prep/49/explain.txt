@@ -1,0 +1,22 @@
+I make two functions: one to compute primes and one to print dots.
+The primes function is straightforward, and is not the focus of the
+exercise. Likewise, the dot function is also very simple. The main
+focus of the exercise is in the main function. I take the number of
+primes from argv and convert it to an integer. I create an isFinished
+variable and set it to false. I pass isFinished by reference (narrows
+scope relative to global) to the dots function. Then I call primes with
+the number of primes and isFinished. The primes function will return a
+vector of the primes it computes. I note the timestamp before and after
+calling primes (using system clock). Then I convert to time_t which can
+be displayed using ctime. The time taken in seconds is the difference
+between the two times (duration object). Finally, I print the primes
+and the time information. The dots function printed dots while primes were
+being computed and then the function is joined.
+
+The output of the program is as follows:
+..
+{ A large number of primes }
+
+Starting time: Mon Jan 23 20:36:56 2023
+Ending time: Mon Jan 23 20:36:57 2023
+Computation of 20000 primes took 1.78174 seconds

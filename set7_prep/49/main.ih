@@ -1,0 +1,10 @@
+#include <vector>
+#include <iostream>
+#include <chrono>
+#include <thread>
+#include <algorithm>
+#include <iterator>
+#include <ctime>
+
+std::vector<size_t> findPrimes(size_t count, bool &isFinished);
+void displayDots(bool &isFinished);
