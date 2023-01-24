@@ -1,0 +1,9 @@
+#include "TaskThreads.h"
+#include <array>
+#include "../task/Task.h"
+#include <chrono>
+#include <iostream>
+
+bool isPunctuation(char ch);
+bool isHexadecimal(char ch);
+bool isVowel(char ch);

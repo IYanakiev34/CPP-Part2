@@ -1,0 +1,39 @@
+I started with Task since task threads use task objects.
+I made a constructor which simply takes the function and label
+and stores them. I also initialized its counter to 0. I defined
+the () operator so the thread can call a task. The operator
+just iterates over the characters in a file and counts the
+number of times the predicate function returns true. I also define
+simple functions to get the label and the count. Lastly, I defined
+a function to set the task's target file.
+
+Then I define TaskThreads. It has data members for the tasks, threads,
+whether to parallelize, and the time taken. Its constructor takes the
+program arguments and uses them to determine whether to parallelize.
+It also initializes the tasks and empty threads. The predicates passed
+to the tasks are simple functions. For digits I just use a lambda with
+isdigit. I define run, which either calls the tasks in a for loop or
+creates and joins threads for them. Run also times how long it takes and
+updates the data member. Lastly, I define two simple functions to print
+the results.
+
+First I try to run the program on a file with "1,a" (in ||) and get:
+    vowels: 1
+    digits: 1
+    hexadecimals: 2
+    punctuation: 1
+    Time taken: 0.0018575 seconds
+Which checks out. I also valgrinded this and found no leaks.
+Then I tried ./main cplusplus.pdf:
+    vowels: 376230
+    digits: 845590
+    hexadecimals: 1279722
+    punctuation: 4140208
+    Time taken: 0.165815 seconds
+Then tried ./main cplusplus.pdf not parallel:
+    vowels: 376230
+    digits: 845590
+    hexadecimals: 1279722
+    punctuation: 4140208
+    Time taken: 0.534367 seconds
+So it seems that parallelizing does produce speedup.
