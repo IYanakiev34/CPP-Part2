@@ -1,0 +1,8 @@
+First I check that the program receives its time argument.
+Then I break the argument into an integer and a time unit.
+Next I determine the current time with system clock now.
+I convert now to time_t which can be passed to localtime and
+gmtime, which can in turn be given to put_time. Next I add
+the time argument to now by using a switch statement to convert
+the time unit to the appropriate chrono unit. Then I display the
+result in the same manner as above.
