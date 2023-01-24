@@ -9,7 +9,7 @@ using namespace std;
 int main(int argc, char **argv)
 {
     if (argc < 2)
-        throw invalid_argument{"Missing argument"};
+        throw invalid_argument("Missing argument");
     int timeValue = atoi(argv[1]);
     char timeUnit = argv[1][strlen(argv[1]) - 1];
 
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
             now += chrono::hours(timeValue);
             break;
         default:
-            throw invalid_argument{"Invalid time unit"};
+            throw invalid_argument("Invalid time unit");
     }
     nowC = chrono::system_clock::to_time_t(now);
     cout << "After adding " << argv[1] << ":\n"
