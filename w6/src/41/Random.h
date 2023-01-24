@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <random>
-#include <ctime>
 
 class Random
 {
@@ -11,8 +10,8 @@ class Random
     std::uniform_int_distribution<int> d_Dis;
 
 public:
-    Random(unsigned int low, unsigned int high);
-    std::vector<int> range();
+    Random(unsigned low, unsigned high);
+    std::pair<int, int> range();
     int operator()();
 };
 
@@ -21,4 +20,8 @@ inline int Random::operator()()
     return d_Dis(d_Engine);
 }
 
+inline std::pair<int, int> Random::range()
+{
+    return {d_Dis.min(), d_Dis.max()};
+}
 #endif
