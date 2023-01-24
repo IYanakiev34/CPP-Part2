@@ -59,7 +59,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    std::thread thr{&Handler::shift, std::ref(h), std::ref(of), std::ref(text)};
+    std::thread thr{&Handler::shift, &h, std::ref(of), std::ref(text)};
     thr.join();
 
     std::cout << "\nSecond method\n";
@@ -67,5 +67,9 @@ int main(int argc, char **argv)
     // Does it mean that we make a thread which returns a Handler object
     // and then pass this object into another thread?
     // What does a thread that defines an object mean
+
+    // Im going with my best guess
+    std::thread t{&Handler::shift, Handler{}, std::ref(of), std::ref(text)};
+    t.join();
     return 0;
 }

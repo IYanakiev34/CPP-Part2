@@ -20,10 +20,13 @@ int main(int argc, char **argv)
     std::thread thr{&Handler::shift, std::ref(h), std::ref(of), std::ref(text)};
     thr.join();
 
-    std::cout << "\nSecond method\n";
     // I am not sure by what a second thread defines an object means
     // Does it mean that we make a thread which returns a Handler object
     // and then pass this object into another thread?
     // What does a thread that defines an object mean
+
+    // I am going with my best guess
+    std::thread thr2{&Handler::shift, Handler{}, std::ref(of), std::ref(text)};
+    thr2.join();
     return 0;
 }
