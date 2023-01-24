@@ -1,2 +1,2 @@
-#include "Random.ih"
+#include "Random.h"
 #include <ctime>
