@@ -8,14 +8,14 @@ class Student
 {
     std::string d_name;
     std::string d_lastName;
-    unsigned int d_number;
+    unsigned d_number;
     float d_grade;
 
 public:
     Student() = default;
 
     Student(std::string const &name, std::string const &lastName,
-            unsigned int number, float grade);
+            unsigned number, float grade);
 
     std::string name() const;
 
@@ -40,7 +40,7 @@ inline std::string Student::lastName() const
     return d_lastName;
 }
 
-inline unsigned int Student::number() const
+inline unsigned Student::number() const
 {
     return d_number;
 }

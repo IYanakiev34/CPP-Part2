@@ -1,11 +1,14 @@
 explain.txt
 
-main.ih
-FillUnique.h
-Random.h
+Sol/FillUnique.ih
+Sol/FillUnique.h
+Sol/fill.cc
+Sol/store.cc
+Sol/Random.ih
+Sol/Random.h
+Sol/random.cc
+Sol/data.cc
 
+
+main.ih
 main.cc
-fill.cc
-random.cc
-range.cc
-store.cc

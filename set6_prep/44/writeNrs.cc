@@ -4,5 +4,5 @@ void writeNrs(std::ostream &out, std::vector<Student> &students,
               std::vector<int> &indices)
 {
     for (auto it = indices.begin(); it != indices.end(); ++it)
-        out << students[*it];
+        out << students[*it].number() << students[*it].grade();
 }
