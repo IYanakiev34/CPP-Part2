@@ -1,0 +1,5 @@
+The first part is straightforward,
+we just pass the function address of the handler
+class and then references to the variables. The
+second part is confusing us. What should the phrase
+" by running a thread that itself defines a Hanlder object".

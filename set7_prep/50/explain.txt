@@ -1,0 +1,17 @@
+In order to convert between time units
+we can use the built in duration_cast.
+This cast can convert from a supplied
+std::chrono::duration in sepcified time
+units like minutes, to another duration
+in another type of time units like hours.
+One key note is that this conversion will
+return integral type. Thusm if we have 90
+seconds and we want to convert it to minutes
+we will get 1, if we wish to get more precisely
+1.5 we need to specify our own duration type. We
+have provided both just to showcase the differences.
+
+NOTE for the latter solution which was not needed for
+the assignment 'magic' numbers were used if by magic
+someone means the common knowledge that 60 seconds 
+is one minute.

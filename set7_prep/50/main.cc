@@ -1,12 +1,5 @@
-#include "52/handler.h"
-
 #include <iostream>
 #include <chrono>
-#include <string>
-#include <algorithm>
-#include <iterator>
-#include <thread>
-#include <fstream>
 
 int usage()
 {
@@ -23,12 +16,12 @@ int usage()
 int main(int argc, char **argv)
 {
     /* Exercise 50
-
+     */
     if (argc < 3)
         return usage();
 
-    unsigned hours = std::stoull(argv[1]);
-    unsigned seconds = std::stoull(argv[2]);
+    unsigned const hours = std::stoull(argv[1]);
+    unsigned const seconds = std::stoull(argv[2]);
 
     std::cout << "Hours: " << hours << ", to minutes: "
               << std::chrono::duration_cast<std::chrono::minutes>(std::chrono::hours(hours)).count() << "\n";
@@ -39,33 +32,5 @@ int main(int argc, char **argv)
     std::cout << "Seconds: " << seconds << ", to precise minutes: "
               << std::chrono::duration<double, std::ratio<60, 1>>(std::chrono::seconds(seconds)).count()
               << std::endl;
-    */
-
-    /* Exercise 52
-     */
-
-    if (argc < 3)
-        return usage();
-
-    std::string const fileName{argv[1]};
-    std::string const text{argv[2]};
-
-    Handler h{};
-    std::ofstream of{fileName};
-
-    if (!of.is_open())
-    {
-        std::cerr << "Could not open the file\n";
-        return 1;
-    }
-
-    std::thread thr{&Handler::shift, std::ref(h), std::ref(of), std::ref(text)};
-    thr.join();
-
-    std::cout << "\nSecond method\n";
-    // I am not sure by what a second thread defines an object means
-    // Does it mean that we make a thread which returns a Handler object
-    // and then pass this object into another thread?
-    // What does a thread that defines an object mean
     return 0;
 }
