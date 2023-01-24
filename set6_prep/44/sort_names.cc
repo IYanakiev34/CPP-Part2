@@ -8,3 +8,4 @@ void sortByLastNames(std::vector<Student> &students)
               {
                   return (strcasecmp(student1.lastName().c_str(), student2.lastName().c_str())) < 0;
               });
+}
