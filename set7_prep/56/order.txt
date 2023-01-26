@@ -1,17 +1,17 @@
 explain.txt
 
-task\Task.ih
-task\Task.h
-task\ctor.cc
-task\task_op.cc
-taskthreads\TaskThreads.ih
-taskthreads\TaskThreads.h
-taskthreads\ctor.cc
-taskthreads\display_counts.cc
-taskthreads\is_hexadecimal.cc
-taskthreads\is_punctuation.cc
-taskthreads\is_vowel.cc
-taskthreads\run.cc
-taskthreads\show_time.cc
+task/Task.ih
+task/Task.h
+task/ctor.cc
+task/task_op.cc
+taskthreads/TaskThreads.ih
+taskthreads/TaskThreads.h
+taskthreads/ctor.cc
+taskthreads/display_counts.cc
+taskthreads/is_hexadecimal.cc
+taskthreads/is_punctuation.cc
+taskthreads/is_vowel.cc
+taskthreads/run.cc
+taskthreads/show_time.cc
 
 main.cc

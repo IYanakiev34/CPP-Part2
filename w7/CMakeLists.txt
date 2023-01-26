@@ -8,11 +8,13 @@ set(CXX_STANDARD_REQUIRED True)
 add_executable(set7 src/main.cc)
 
 add_subdirectory(src/52)
+add_subdirectory(src/54)
 
 target_include_directories(set7 PRIVATE
                             "${PROJECT_BINARY_DIR}"
                             "${PROJECT_SOURCE_DIR}/src"
-                            "${PROJECT_SOURCE_DIR}/src/52/")
+                            "${PROJECT_SOURCE_DIR}/src/52/"
+                            "${PROJECT_SOURCE_DIR}/src/54/")
 
 
-target_link_libraries(set7 PRIVATE HANDLER)
+target_link_libraries(set7 PRIVATE HANDLER STORAGE)

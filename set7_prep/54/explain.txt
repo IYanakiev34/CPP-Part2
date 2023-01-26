@@ -1,0 +1,13 @@
+Storage class would essentially be kind of
+a thread safe queue. We protect the modification
+of the queue using a lock_guard, this also saves
+us from having to manually unlock the mutex in the
+storage class. Furthermore we have a boolean indicating
+if we have finished. We set this bool to true in main
+after we finish scanning from main which can then also
+stop the consumer thread gracefully. The consumer thread
+consist of a function called consumer. This function
+has a while loop which loops while the storage's bool
+d_finished is not set to true. The we sleep for a second
+check if we have anything in the queue, if so we take it
+and put it in the file.
