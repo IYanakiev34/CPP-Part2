@@ -1,10 +1,31 @@
 #include "main.ih"
-
-void fun(std::ostream &out)
+struct Lines
 {
-    out << "hello\n";
-}
+    int d_lines;
 
+    Lines() : d_lines(0){};
+    Lines(Lines &&tmp) : d_lines(tmp.d_lines) { tmp.d_lines = 0; }
+};
+
+std::mutex guard;
+
+void consumer(Storage &str, std::ostream &out, Lines &lines)
+{
+    std::cout << "add: " << &str << "\n";
+
+    while (!str.getFinished())
+    {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+
+        std::lock_guard<std::mutex> lg(guard);
+        if (!str.empty())
+        {
+            out << str.front() << "\n";
+            str.pop();
+            ++lines.d_lines;
+        }
+    }
+}
 int main(int argc, char **argv)
 {
     std::vector<std::string> fileNames;
@@ -12,20 +33,40 @@ int main(int argc, char **argv)
     std::copy(argv + 1, argv + argc, std::back_inserter(fileNames));
 
     Storage str;
-    std::cout << "main add: " << &str << '\n';
-    std::vector<ConsThread> threads;
-
-    // create threads
+    Lines obj[argc - 1];
+    std::ofstream files[argc - 1];
+    for (int i = 0; i < argc - 1; ++i)
+    {
+        files[i] = std::ofstream(fileNames[i]);
+        if (!files[i].is_open())
+            std::cout << "problem with file: " << fileNames[i];
+    }
+    std::vector<std::thread> threads;
+    int i = 0;
     for (auto it = fileNames.begin(); it != fileNames.end(); ++it)
-        threads.push_back(ConsThread(str, *it));
+    {
+        threads.push_back(std::thread(consumer, std::ref(str), std::ref(files[i]), std::ref(obj[i])));
+        ++i;
+    }
 
-    // start threads
-    std::for_each(threads.begin(), threads.end(), [](ConsThread &thr)
-                  { thr.start(); });
+    std::string currLine;
+    while (getline(std::cin, currLine))
+        str.push(currLine);
 
-    std::for_each(threads.begin(), threads.end(), [](ConsThread &thr)
-                  { thr.join(); });
+    str.setFinished(true);
 
+    std::cout << "finished\n";
+    for (auto it = threads.begin(); it != threads.end(); ++it)
+    {
+        if (it->joinable())
+            it->join();
+    }
+    std::cout << "joined\n";
+
+    for (int i = 0; i < argc - 1; ++i)
+        std::cout << "Lines[" << i << "]: " << obj[i].d_lines << "\n";
+
+    std::cout << "end\n";
     return 0;
 }
 /*54
