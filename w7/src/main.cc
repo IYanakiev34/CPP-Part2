@@ -1,59 +1,49 @@
-#include "storage.h"
-#include "52/handler.h"
+#include "main.ih"
 
-#include <iostream>
-#include <chrono>
-#include <string>
-#include <algorithm>
-#include <iterator>
-#include <thread>
-#include <fstream>
-
-#include <queue>
-
-int usage()
+void fun(std::ostream &out)
 {
-    char const info[] = R"(You should supply two arguments to the program.
-                    The first one should represent the hours,the second one
-                    the minutes. Note the two numbers should be positive integral
-                    numbers.!)";
-
-    std::cout << info << std::endl;
-
-    return 1;
-}
-
-void consumer(Storage &str, std::ostream &out)
-{
-    while (!str.getFinished())
-    {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        if (!str.empty())
-        {
-            out << "From thread: " << str.front() << "\n";
-            str.pop();
-        }
-    }
+    out << "hello\n";
 }
 
 int main(int argc, char **argv)
 {
-    std::string const fileName{argv[1]};
-    std::ofstream file{fileName};
+    std::vector<std::string> fileNames;
+
+    std::copy(argv + 1, argv + argc, std::back_inserter(fileNames));
 
     Storage str;
-    std::thread thr{consumer, std::ref(str), std::ref(file)};
+    std::cout << "main add: " << &str << '\n';
+    std::vector<ConsThread> threads;
 
-    // Scan the current line
-    std::string currLine;
-    while (getline(std::cin, currLine))
-        str.push(currLine);
+    // create threads
+    for (auto it = fileNames.begin(); it != fileNames.end(); ++it)
+        threads.push_back(ConsThread(str, *it));
 
-    str.setFinished(true);
+    // start threads
+    std::for_each(threads.begin(), threads.end(), [](ConsThread &thr)
+                  { thr.start(); });
 
-    thr.join();
+    std::for_each(threads.begin(), threads.end(), [](ConsThread &thr)
+                  { thr.join(); });
+
     return 0;
 }
+/*54
+std::string const fileName{argv[1]};
+std::ofstream file{fileName};
+
+Storage str;
+std::thread thr{consumer, std::ref(str), std::ref(file)};
+
+// Scan the current line
+std::string currLine;
+while (getline(std::cin, currLine))
+    str.push(currLine);
+
+str.setFinished(true);
+
+thr.join();
+*/
 
 /* Exercise 50
 
