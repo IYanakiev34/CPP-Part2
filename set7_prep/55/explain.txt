@@ -1,0 +1,27 @@
+For this example we will encapsulate the
+consumer method into an object that will
+act as a thread. Each thread will count the
+lines it poll via a pollLines method and stora
+the value in d_lines member variable. Each consumer
+will need a few things:
+
+    1. The filename that we will use to write to
+    2. Reference to a storage
+    3. Reference to a mutex
+
+Since we will have multiple client we need to
+synchronize them. Our storage has synchronized atomic
+actions like pop,push,etc however in our thread
+we want to:
+    1. Check if empty
+    2. If not use front()
+    3. Use pop
+    4. increment member variable d_lines
+
+We have 3 operations using the storage that need to
+be locked otherwise if we have many threads what might
+happen is:
+    Thread one uses empty(), but the thread 2 is in
+    the middle of its procedure so it uses pop().
+Basically threads needs to finish this sequence that
+they have before any other thread starts theirs.

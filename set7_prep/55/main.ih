@@ -1,0 +1,15 @@
+#include "Consumer/consumer.h"
+#include "../54/storage/storage.h"
+
+#include <vector>
+#include <iterator>
+#include <algorithm>
+
+void createThreads(std::vector<Consumer> &threads, std::vector<std::string> &filenames,
+                   Storage &str, std::mutex &mut);
+
+void startThreads(std::vector<Consumer> &threads);
+
+void joinThreads(std::vector<Consumer> &threads);
+
+void printLines(std::vector<Consumer> &threads);

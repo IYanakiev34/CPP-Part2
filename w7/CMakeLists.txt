@@ -9,6 +9,7 @@ add_executable(set7 src/main.cc )
 
 add_subdirectory(src/52)
 add_subdirectory(src/54)
+add_subdirectory(src/55)
 
 target_include_directories(set7 PRIVATE
                             "${PROJECT_BINARY_DIR}"
@@ -18,5 +19,5 @@ target_include_directories(set7 PRIVATE
                             "${PROJECT_SOURCE_DIR}/src/55/")
 
 
-target_link_libraries(set7 PRIVATE HANDLER STORAGE)
+target_link_libraries(set7 PRIVATE HANDLER STORAGE CONS)
 target_precompile_headers(set7 PRIVATE src/main.ih)

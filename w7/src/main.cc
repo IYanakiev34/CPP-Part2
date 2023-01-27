@@ -1,72 +1,54 @@
 #include "main.ih"
-struct Lines
+
+void createThreads(std::vector<Consumer> &threads, std::vector<std::string> &filenames,
+                   Storage &str, std::mutex &mut)
 {
-    int d_lines;
-
-    Lines() : d_lines(0){};
-    Lines(Lines &&tmp) : d_lines(tmp.d_lines) { tmp.d_lines = 0; }
-};
-
-std::mutex guard;
-
-void consumer(Storage &str, std::ostream &out, Lines &lines)
-{
-    std::cout << "add: " << &str << "\n";
-
-    while (!str.getFinished())
-    {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-
-        std::lock_guard<std::mutex> lg(guard);
-        if (!str.empty())
-        {
-            out << str.front() << "\n";
-            str.pop();
-            ++lines.d_lines;
-        }
-    }
+    for (auto it = filenames.begin(); it != filenames.end(); ++it)
+        threads.push_back(Consumer(str, *it, mut));
 }
+
+void startThreads(std::vector<Consumer> &threads)
+{
+    std::for_each(threads.begin(), threads.end(), [](Consumer &thr)
+                  { thr.startThread(); });
+}
+
+void joinThreads(std::vector<Consumer> &threads)
+{
+    std::for_each(threads.begin(), threads.end(), [](Consumer &thr)
+                  { thr.joinThread(); });
+}
+
+void printLines(std::vector<Consumer> &threads)
+{
+    std::for_each(threads.begin(), threads.end(), [](Consumer const &thr)
+                  { std::cout << thr.getLines() << "\n"; });
+}
+
 int main(int argc, char **argv)
 {
     std::vector<std::string> fileNames;
-
     std::copy(argv + 1, argv + argc, std::back_inserter(fileNames));
 
     Storage str;
-    Lines obj[argc - 1];
-    std::ofstream files[argc - 1];
-    for (int i = 0; i < argc - 1; ++i)
-    {
-        files[i] = std::ofstream(fileNames[i]);
-        if (!files[i].is_open())
-            std::cout << "problem with file: " << fileNames[i];
-    }
-    std::vector<std::thread> threads;
-    int i = 0;
-    for (auto it = fileNames.begin(); it != fileNames.end(); ++it)
-    {
-        threads.push_back(std::thread(consumer, std::ref(str), std::ref(files[i]), std::ref(obj[i])));
-        ++i;
-    }
+    std::mutex mut;
+    std::vector<Consumer> consumers;
 
+    createThreads(consumers, fileNames, str, mut);
+
+    startThreads(consumers);
+
+    // Start the producer
     std::string currLine;
     while (getline(std::cin, currLine))
         str.push(currLine);
 
+    // Finish the producer
     str.setFinished(true);
 
-    std::cout << "finished\n";
-    for (auto it = threads.begin(); it != threads.end(); ++it)
-    {
-        if (it->joinable())
-            it->join();
-    }
-    std::cout << "joined\n";
+    joinThreads(consumers);
 
-    for (int i = 0; i < argc - 1; ++i)
-        std::cout << "Lines[" << i << "]: " << obj[i].d_lines << "\n";
-
-    std::cout << "end\n";
+    printLines(consumers);
     return 0;
 }
 /*54
