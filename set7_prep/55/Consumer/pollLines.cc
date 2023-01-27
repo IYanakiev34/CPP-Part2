@@ -6,8 +6,6 @@ void Consumer::pollLines(Storage &str, std::string const &filename, std::mutex &
     if (!out.is_open())
         std::cerr << "Cannot open file\n";
 
-    std::cout << "Address of storage: " << &str << "\n";
-
     while (!str.getFinished())
     {
         std::this_thread::sleep_for(std::chrono::seconds(1));
