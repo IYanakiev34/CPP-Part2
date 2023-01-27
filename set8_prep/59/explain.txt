@@ -1,0 +1,11 @@
+In order to make use of std::async we
+just need to issue each recursive call
+to qsort to be done in a seperate thread.
+At the end of the function we can just wait
+for both sides to be sorted. Then in main
+we create an array from 0 to 99 using iota.
+The we shuffle it and print it so we validate
+that the array is shuffled. After that we
+proceed to sort it using the qsort and then
+print it again to validate that it is indeed
+sorted.

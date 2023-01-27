@@ -1,0 +1,6 @@
+In order to use multiple threads we can
+create a vector<future<string>> which will
+store the future results of each thread. Then
+in the main while loop we will just need to
+iterate over the vector and check if a thread
+has finished if so we end the program.

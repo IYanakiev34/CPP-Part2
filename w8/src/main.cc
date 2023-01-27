@@ -1,13 +1,54 @@
 #include <iostream>
-
+#include <string>
 #include <numeric>
 #include <vector>
 #include <future>
 #include <algorithm>
 #include <functional>
 
+#include <iterator>
+#include <thread>
+
+void qsort_mt(int *beg, int *end)
+{
+    if (end - beg <= 1)
+        return;
+
+    int lhs = *beg;
+    int *mid = std::partition(beg + 1, end,
+                              [&](int arg)
+                              {
+                                  return arg < lhs;
+                              });
+
+    std::swap(*beg, *(mid - 1));
+
+    // use async to sort the two subarrays in separate threads
+    auto left_sort = std::async(qsort_mt, beg, mid);
+    auto right_sort = std::async(qsort_mt, mid, end);
+
+    // wait for the two async calls to finish
+    left_sort.wait();
+    right_sort.wait();
+}
+
+std::string threadFun()
+{
+    std::cerr << "entry\n";
+
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::cerr << "first cerr\n";
+
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::cerr << "second cerr\n";
+
+    return "end the program";
+}
+
 int main(int argc, char **argv)
 {
+
+    /*58
     double lhs[4][5];
     double rhs[6][5];
 
@@ -38,6 +79,7 @@ int main(int argc, char **argv)
             std::cout << fut[row][col].get() << " ";
         std::cout << "\n";
     }
+    */
 
     // NOTE to ALEX
     // The method should be correct however due to the nature of the raw arrays
@@ -46,5 +88,43 @@ int main(int argc, char **argv)
 
     // option A I am stupid and there is problem with the ranges
     // option B wrong method but i doubt it
+
+    // 59 + function qsort_mt
+    /*
+    std::size_t const iaSize{100};
+    int ia[iaSize];
+
+    std::iota(ia, ia + iaSize, 0);
+    std::random_shuffle(ia, ia + iaSize);
+
+    std::cout << "Before sort:\n";
+    std::copy(ia, ia + iaSize, std::ostream_iterator<int>(std::cout, " "));
+    std::cout << std::endl;
+
+    qsort_mt(ia, ia + iaSize);
+
+    std::cout << "After sort:\n";
+    std::copy(ia, ia + iaSize, std::ostream_iterator<int>(std::cout, " "));
+    std::cout << std::endl;
+    */
+
+    // 60
+    // Start the threadFun in a separate thread
+    std::future<std::string> result = std::async(std::launch::async, threadFun);
+
+    size_t count = 0;
+    while (true)
+    {
+        // do the main-task
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cerr << "inspecting: " << ++count << '\n';
+
+        // inspect whether the thread indicates to end the program
+        if (result.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
+        {
+            std::cerr << "done\n";
+            break;
+        }
+    }
     return 0;
 }
