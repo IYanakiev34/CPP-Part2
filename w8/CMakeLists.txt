@@ -4,12 +4,20 @@ project(set8 VERSION 1.0 LANGUAGES CXX)
 
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED True)
+set(CXX_EXTENSIONS Off)
 
 add_executable(set8 src/main.cc)
 
-target_compile_options(set8 PRIVATE -Wall -Werror -O2 -pedantic)
+add_subdirectory(src/57)
+
+target_compile_options(set8 PRIVATE -Wall -Werror -O2 -pedantic -lpthread)
 
 target_include_directories(set8 PRIVATE 
                     "${PROJECT_BINARY_DIR}/"
-                    "${PROJECT_SOURCE_DIR}/src")
+                    "${PROJECT_SOURCE_DIR}/src"
+                    "${PROJECT_SOURCE_DIR}/src/57/")
+
+target_link_libraries(set8 PRIVATE SEMAPHORE)
+
+# target_precompile_headers(set8 PRIVATE main.ih)
     

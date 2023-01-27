@@ -25,3 +25,8 @@ happen is:
     the middle of its procedure so it uses pop().
 Basically threads needs to finish this sequence that
 they have before any other thread starts theirs.
+
+We provide also auxiliary methods as join and start 
+this gives the user full control of when they wish to start
+and join the threads. The destructor makes sure that we
+release the thread resource, i.e join it if we can join it.

@@ -1,0 +1,2 @@
+The implementation of the class Semaphore
+was followed using the Annotations.

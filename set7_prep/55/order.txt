@@ -1,9 +1,15 @@
 Consumer/Consumer.h
 Consumer/Consumer.ih
+Consumer/ctor.cc
+Consumer/dtor.cc
+Consumer/joinThread.cc
+Consumer/startThread.cc
+Consumer/mov-ctor.cc
+Consumer/pollLines.cc
 
--- methods
-
-
--- main header
-
--- main methods
+main.ih
+joinThreads.cc
+createThreads.cc
+printLines.cc
+startThreads.cc
+main.cc
