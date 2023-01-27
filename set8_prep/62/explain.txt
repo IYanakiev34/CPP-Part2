@@ -1,0 +1,105 @@
+The solution will revolve around the
+following components.
+
+1. A main thread that will be responsible
+for parsing the comandline arguments,reading
+list of source, initializing threads and their
+data structures.
+
+2. A thread pool (workers) of configurable amount.
+Each worker will be responsible for compiling
+a single source file at a time. The number of workers
+will be defined by the user (default number of cores)
+on the computer. If the user enters 0 then 1 is silently
+used.
+
+3. A shared data structure (such as queue) that will be
+used to pass the source files from main thread to
+workers.
+
+4. A shared data structure (such as set). This will keep
+track of which source files have been compiled. (which
+have failed)
+
+5. Combination of lock_guard and mutex to synchronize the
+data structures so that no race conditions occur.
+
+6. Semaphore will be used to signal to the main thread
+when a compilation fails. This will indicate to the main
+thread to stop and display the error message, then end
+the program.
+
+The flow of the program would be as follows:
+
+1. Main thread parses arguments and read the list of source files.
+
+2. Main thread initializes data structures and thread pool.
+
+3. Main thread adds source files to the shared queue 
+
+4. Worker threads take source files from the queue and
+compile them.
+
+5. If compilation fails, the worker signals the Semaphore
+and adds the error output and failed source to the shared set.
+
+6. Main waits for signal, when it is it stops and displays error
+output if any.
+
+7. Main thread removes the temp directory if specified
+
+8. end the program
+
+Classes:
+
+1. BlockingQueue
+2. BlockingSet
+
+Both of these classes are independent
+of one another and both of them will
+be protected by mutexes to avoid races.
+These classes will store the files that
+have to be and have been compiled.
+
+3. CompileWorker
+
+This class will encapsulate a thread responsible
+for compiling a source file.
+
+4. Semaphore
+
+This will a binary semaphore since even if 1 file
+fails to compile we have problem. Used to signal to
+main to end program and print error output.
+
+Possible classes:
+
+1. CompileFile (maybe if we need to store extra information
+about the file it will be good to encapsulate it into its
+own object)
+
+Hierarchy:
+
+    BlockingQueue--------------BlockingSet
+        -                          -
+        -                          -
+        -                          -
+        -                          -
+        +-------------+------------+
+                 CompileWorker              Semaphore
+                      -                        -
+                      -                        -
+                      -                        -
+                      -                        -
+                      +-----------+------------+
+                                main
+                            
+This hierarchy shows how the classes that we create
+will function between one another. We exclude other
+classes that main will use like:
+    vector
+    queue
+    thread (or async,packaged_task)
+    etc
+since these classes are already provided by the language
+and we will not design them.
