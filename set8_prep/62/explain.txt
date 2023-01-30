@@ -72,6 +72,17 @@ This will a binary semaphore since even if 1 file
 fails to compile we have problem. Used to signal to
 main to end program and print error output.
 
+5. FileFinder
+
+This class will handle finding the source file locations
+and gathering them into a vector. The class will expect
+the user to:
+
+A. Specify a directory to search
+B. Specify a file that contains the location of all sources
+C. If none specified we will search the current directory for
+source files.
+
 Possible classes:
 
 1. CompileFile (maybe if we need to store extra information
@@ -86,12 +97,12 @@ Hierarchy:
         -                          -
         -                          -
         +-------------+------------+
-                 CompileWorker              Semaphore
-                      -                        -
-                      -                        -
-                      -                        -
-                      -                        -
-                      +-----------+------------+
+                 CompileWorker              Semaphore      FileFinder
+                      -                        -             -
+                      -                        -             -
+                      -                        -             -
+                      -                        -             -
+                      +-----------+------------+--------------
                                 main
                             
 This hierarchy shows how the classes that we create

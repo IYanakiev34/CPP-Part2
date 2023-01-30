@@ -9,15 +9,19 @@ set(CXX_EXTENSIONS Off)
 add_executable(set8 src/main.cc)
 
 add_subdirectory(src/57)
+add_subdirectory(src/63)
+add_subdirectory(src/queue)
 
 target_compile_options(set8 PRIVATE -Wall -Werror -O2 -pedantic -lpthread)
 
 target_include_directories(set8 PRIVATE 
                     "${PROJECT_BINARY_DIR}/"
                     "${PROJECT_SOURCE_DIR}/src"
-                    "${PROJECT_SOURCE_DIR}/src/57/")
+                    "${PROJECT_SOURCE_DIR}/src/57/"
+                    "${PROJECT_SOURCE_DIR}/src/63/"
+                    "${PROJECT_SOURCE_DIR}/src/queue")
 
-target_link_libraries(set8 PRIVATE SEMAPHORE)
+target_link_libraries(set8 PRIVATE SEMAPHORE FILEFINDER BLOCKQUEUE)
 
 # target_precompile_headers(set8 PRIVATE main.ih)
     

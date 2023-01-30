@@ -1,3 +1,5 @@
+#include "BlockQueue.h"
+#include "FileFinder.h"
 #include <iostream>
 #include <string>
 #include <numeric>
@@ -8,123 +10,114 @@
 
 #include <iterator>
 #include <thread>
+#include <cstdlib>
 
-void qsort_mt(int *beg, int *end)
+// Should work
+void testFileFinderFromDir(std::string const &dir)
 {
-    if (end - beg <= 1)
-        return;
+    FileFinder *finder = FileFinder::getInstance();
 
-    int lhs = *beg;
-    int *mid = std::partition(beg + 1, end,
-                              [&](int arg)
-                              {
-                                  return arg < lhs;
-                              });
-
-    std::swap(*beg, *(mid - 1));
-
-    // use async to sort the two subarrays in separate threads
-    auto left_sort = std::async(qsort_mt, beg, mid);
-    auto right_sort = std::async(qsort_mt, mid, end);
-
-    // wait for the two async calls to finish
-    left_sort.wait();
-    right_sort.wait();
+    auto files = finder->getSourcesFromDir("../src/");
+    std::copy(files.begin(), files.end(), std::ostream_iterator<std::string>(std::cout, " "));
+    std::cout << std::endl;
 }
 
-std::string threadFun()
+void testFileFinderFromDirRec(std::string const &dir)
 {
-    std::cerr << "entry\n";
+    FileFinder *finder = FileFinder::getInstance();
 
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-    std::cerr << "first cerr\n";
+    auto files = finder->getSourcesFromDirRec("../src/");
+    std::copy(files.begin(), files.end(), std::ostream_iterator<std::string>(std::cout, " "));
+    std::cout << std::endl;
+}
 
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-    std::cerr << "second cerr\n";
+void printSources(std::vector<std::string> &sources)
+{
+    for (auto &source : sources)
+        std::cout << source << "\n";
+}
 
-    return "end the program";
+void compileWorker(std::string const &fileName)
+{
+    // This should be in a while loop using semaphores
+    // for notification when another file is available
+
+    std::string compileCommand{"g++ -std=c++20 -Wall -Werror -o a.out " + fileName};
+    // std::string compileCommand{"g++ -std=c++20 -Wall -Werror -o a.out " + fileName + " 2> errors.txt"};
+    int res = std::system(compileCommand);
+    if (res == 0)
+        std::cout << "Successfully compiled file: " << fileName << "\n";
+    else
+        std::cout << "Error: Could not compile file: " << fileName
+                  << ", error output is in errors.txt\n";
+    // re-route uoutput to file, return the future of the the filename
+    // if  "",no errors if not, errors, main should end
+    // print the error in main
+    // remove the file
 }
 
 int main(int argc, char **argv)
 {
+    std::string dir{"."};
+    unsigned numThread{};
 
-    /*58
-    double lhs[4][5];
-    double rhs[6][5];
+    // if no args then max threads + current dir
+    if (argc < 2)
+        numThread = std::thread::hardware_concurrency();
 
-    // fill lhs with 2s
-    std::for_each(lhs, lhs + 4, [](auto &v)
-                  { std::fill(v, v + 5, 2); });
-
-    // fill rhs with 4s
-    std::for_each(rhs, rhs + 6, [](auto &v)
-                  { std::fill(v, v + 5, 4); });
-
-    std::future<double> fut[4][6];
-
-    for (std::size_t row = 0; row < 4; ++row)
+    if (argc == 2) // user defined thread num
     {
-        for (std::size_t col = 0; col < 6; ++col)
-        {
-            std::packaged_task<double()> task{[&]()
-                                              { return std::inner_product(&lhs[row][0], &lhs[row][5], &rhs[col][0], 0.0); }};
-            fut[row][col] = task.get_future();
-            std::thread(std::move(task)).detach();
-        }
+        if (std::stoi(argv[1]) == 0)
+            numThread = 1;
+        else
+            numThread = std::stoi(argv[1]);
     }
 
-    for (int row = 0; row < 4; ++row)
+    if (argc == 3) // user defined dir
     {
-        for (int col = 0; col < 6; ++col)
-            std::cout << fut[row][col].get() << " ";
-        std::cout << "\n";
+        // cod duplication mode it into a function
+        if (std::stoi(argv[1]) == 0)
+            numThread = 1;
+        else
+            numThread = std::stoi(argv[1]);
+
+        dir = argv[2];
     }
-    */
 
-    // NOTE to ALEX
-    // The method should be correct however due to the nature of the raw arrays
-    // there may be problem with contigious memory. The last two future results
-    // seem to be off (uninitialized memory)
+    FileFinder *fileFinder = FileFinder::getInstance();
 
-    // option A I am stupid and there is problem with the ranges
-    // option B wrong method but i doubt it
+    std::vector<std::string> sources = fileFinder->getSourcesFromDirRec(dir);
 
-    // 59 + function qsort_mt
-    /*
-    std::size_t const iaSize{100};
-    int ia[iaSize];
+    std::cout << numThread << std::endl;
 
-    std::iota(ia, ia + iaSize, 0);
-    std::random_shuffle(ia, ia + iaSize);
-
-    std::cout << "Before sort:\n";
-    std::copy(ia, ia + iaSize, std::ostream_iterator<int>(std::cout, " "));
-    std::cout << std::endl;
-
-    qsort_mt(ia, ia + iaSize);
-
-    std::cout << "After sort:\n";
-    std::copy(ia, ia + iaSize, std::ostream_iterator<int>(std::cout, " "));
-    std::cout << std::endl;
-    */
-
-    // 60
-    // Start the threadFun in a separate thread
-    std::future<std::string> result = std::async(std::launch::async, threadFun);
-
-    size_t count = 0;
-    while (true)
-    {
-        // do the main-task
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        std::cerr << "inspecting: " << ++count << '\n';
-
-        // inspect whether the thread indicates to end the program
-        if (result.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
-        {
-            std::cerr << "done\n";
-            break;
-        }
-    }
+    // Start workers one by one
     return 0;
 }
+
+// Todo make a CompileFlag class to store the name of the file that we compile
+// also potentially the error output file
+
+/**
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+
+int main() {
+  const char* command = "g++ -o test test.cc 2> errors.txt";
+  int result = std::system(command);
+  if (result == 0) {
+    std::cout << "Compilation succeeded!" << std::endl;
+  } else {
+    std::cout << "Compilation failed with error code " << result << std::endl;
+    std::cout << "Error messages:" << std::endl;
+    std::ifstream errorFile("errors.txt");
+    std::string line;
+    while (std::getline(errorFile, line)) {
+      std::cout << line << std::endl;
+    }
+    errorFile.close();
+    std::remove("errors.txt");
+  }
+  return 0;
+}
+*/
