@@ -1,0 +1,15 @@
+First we create the matrices and fill them.
+Next we init a 4x6 array of futures to store the results.
+Then we loop over those dimensions, computing an inner 
+product at each position. This computation is done in a 
+packaged task containing a lambda which simply calls 
+the inner product on the relevant positions. The lambda 
+uses = as default capture because & causes the last one 
+or a few more to be uninitialized. Finally we display the 
+output once the futures finish. Example output:
+    40 40 40 40 40 40
+    40 40 40 40 40 40
+    40 40 40 40 40 40
+    40 40 40 40 40 40
+Which is as expected since our first array is all twos and 
+the second is all fours (2*4=8 and the inner dimension =5).
