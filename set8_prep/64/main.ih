@@ -1,0 +1,5 @@
+#include <iostream>
+#include <sys/wait.h>
+#include <thread>
+#include "semaphore/semaphore.h"
+void run(pid_t pid, int argc, char **argv);
