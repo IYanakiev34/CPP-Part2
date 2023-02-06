@@ -1,6 +1,7 @@
+#include "FileFinder.h"
 #include "FileFinder.ih"
 
-std::vector<std::string> FileFinder::getSourcesFromDirRec(std::string const &dirName)
+std::vector<std::string> FileFinder::getPathsFromDir(std::string const dirName)
 {
     std::vector<std::string> sourceFiles;
 

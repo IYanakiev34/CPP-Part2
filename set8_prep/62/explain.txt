@@ -29,6 +29,10 @@ when a compilation fails. This will indicate to the main
 thread to stop and display the error message, then end
 the program.
 
+7. A class to abstract the way the input of the user: CompileFlag.
+Since we have more that 1 arguments and also an optional arguments
+it will be usefull to abstract away this functionality in a class.
+
 The flow of the program would be as follows:
 
 1. Main thread parses arguments and read the list of source files.
@@ -83,6 +87,11 @@ B. Specify a file that contains the location of all sources
 C. If none specified we will search the current directory for
 source files.
 
+6. CompileFlag
+This class will store the arguments that the user passes and
+abstract away the setup for repetitive code for set up of number of
+threads + the temporary directory if one is passed.
+
 Possible classes:
 
 1. CompileFile (maybe if we need to store extra information
@@ -97,12 +106,12 @@ Hierarchy:
         -                          -
         -                          -
         +-------------+------------+
-                 CompileWorker              Semaphore      FileFinder
-                      -                        -             -
-                      -                        -             -
-                      -                        -             -
-                      -                        -             -
-                      +-----------+------------+--------------
+                 CompileWorker              Semaphore      FileFinder   CompileFlag
+                      -                        -             -            -
+                      -                        -             -            -
+                      -                        -             -            -
+                      -                        -             -            -
+                      +-----------+------------+---------------------------
                                 main
                             
 This hierarchy shows how the classes that we create
@@ -114,3 +123,14 @@ classes that main will use like:
     etc
 since these classes are already provided by the language
 and we will not design them.
+
+Regarding the printing of the output if a compilation fails. 
+As stated above we will use a binary semaphore to signal to 
+main when e encounter an error. Each thread will have this 
+semaphore as a ref argument. If error is encountered we
+signal to main and print the output. The output could be either
+printed withing the thread or if we use decide to go asynchronous
+we can save the error outut in a string, then collect the future in
+main and again print it. We belive that the set up described throghout
+the document will also us to absract away key complexities of the task
+while also avoiding repetitive code.

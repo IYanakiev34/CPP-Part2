@@ -6,5 +6,5 @@ add_library(BLOCKQUEUE
             front.cc
             pop.cc
             push.cc)
-        
+
 target_precompile_headers(BLOCKQUEUE PRIVATE BlockQueue.ih)

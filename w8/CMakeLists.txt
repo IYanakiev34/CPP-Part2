@@ -11,6 +11,8 @@ add_executable(set8 src/main.cc)
 add_subdirectory(src/57)
 add_subdirectory(src/63)
 add_subdirectory(src/queue)
+add_subdirectory(src/CompileFlag)
+add_subdirectory(src/CompileWorker)
 
 target_compile_options(set8 PRIVATE -Wall -Werror -O2 -pedantic -lpthread)
 
@@ -21,7 +23,7 @@ target_include_directories(set8 PRIVATE
                     "${PROJECT_SOURCE_DIR}/src/63/"
                     "${PROJECT_SOURCE_DIR}/src/queue")
 
-target_link_libraries(set8 PRIVATE SEMAPHORE FILEFINDER BLOCKQUEUE)
+                target_link_libraries(set8 PRIVATE SEMAPHORE FILEFINDER BLOCKQUEUE FLAG WORKER)
 
-# target_precompile_headers(set8 PRIVATE main.ih)
+target_precompile_headers(set8 PRIVATE src/main.ih)
     
