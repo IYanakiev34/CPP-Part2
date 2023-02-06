@@ -3,23 +3,23 @@ following components.
 
 1. A main thread that will be responsible
 for parsing the comandline arguments,reading
-list of source, initializing threads and their
+list of source files, initializing threads and their
 data structures.
 
 2. A thread pool (workers) of configurable amount.
 Each worker will be responsible for compiling
 a single source file at a time. The number of workers
-will be defined by the user (default number of cores)
-on the computer. If the user enters 0 then 1 is silently
-used.
+will be defined by the user (the default is the number of 
+cores on the computer). If the user enters 0 then 1 is 
+silently used.
 
 3. A shared data structure (such as queue) that will be
 used to pass the source files from main thread to
 workers.
 
 4. A shared data structure (such as set). This will keep
-track of which source files have been compiled. (which
-have failed)
+track of which source files have been compiled (and which
+have failed).
 
 5. Combination of lock_guard and mutex to synchronize the
 data structures so that no race conditions occur.

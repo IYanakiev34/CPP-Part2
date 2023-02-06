@@ -1,0 +1,6 @@
+#include <iostream>
+#include <numeric>
+#include <future>
+#include <algorithm>
+#include <iterator>
+void qsort_mt(int *beg, int *end);
