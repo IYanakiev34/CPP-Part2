@@ -8,18 +8,16 @@ class WriteFork : public Fork
     int d_argc;
     char **d_argv;
 public:
-    WriteFork(int argc, char **argv)
-        : d_argc(argc)
-        , d_argv(argv)
-    {}
+    WriteFork(int argc, char **argv);
 private:
     void childProcess() override;
     void parentProcess() override;
-    void core() override
-    {
-        fork();
-        waitForChild();
-    }
+    void core() override;
 };
+
+inline void WriteFork::core()
+{
+    fork();
+}
 
 #endif
