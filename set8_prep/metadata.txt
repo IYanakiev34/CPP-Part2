@@ -1,2 +1,3 @@
 Set: Set8
 Authors: Ivan Yanakiev, Alex Swaters
+Rater: JB

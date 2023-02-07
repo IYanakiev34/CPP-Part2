@@ -131,6 +131,6 @@ semaphore as a ref argument. If error is encountered we
 signal to main and print the output. The output could be either
 printed withing the thread or if we use decide to go asynchronous
 we can save the error outut in a string, then collect the future in
-main and again print it. We belive that the set up described throghout
+main and again print it.We belive that the set up described throghout
 the document will also us to absract away key complexities of the task
 while also avoiding repetitive code.

@@ -23,7 +23,7 @@ target_include_directories(set8 PRIVATE
                     "${PROJECT_SOURCE_DIR}/src/63/"
                     "${PROJECT_SOURCE_DIR}/src/queue")
 
-                target_link_libraries(set8 PRIVATE SEMAPHORE FILEFINDER BLOCKQUEUE FLAG WORKER)
+target_link_libraries(set8 PRIVATE SEMAPHORE FILEFINDER BLOCKQUEUE FLAG WORKER)
 
 target_precompile_headers(set8 PRIVATE src/main.ih)
     
