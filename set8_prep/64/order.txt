@@ -1,7 +1,14 @@
-semaphore/semaphore.h
 semaphore/semaphore.ih
+semaphore/semaphore.h
 semaphore/set.cc
-semaphore/wait_for.cc
 semaphore/wait.cc
-run.cc
+semaphore/wait_for.cc
+write_fork/write_fork.ih
+write_fork/write_fork.h
+write_fork/child.cc
+write_fork/ctor.cc
+write_fork/parent.cc
+-fork.cc
+-fork.h
+-writer.cc
 main.cc

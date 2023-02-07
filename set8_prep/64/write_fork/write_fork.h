@@ -3,6 +3,8 @@
 
 #include "../fork.h"
 
+// Inherit from model soln to 31
+
 class WriteFork : public Fork
 {
     int d_argc;
