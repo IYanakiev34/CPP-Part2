@@ -1,7 +1,7 @@
 #include "write_fork/write_fork.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    WriteFork wf{0, nullptr};
+    WriteFork wf{argc, argv};
     wf.execute();
 }

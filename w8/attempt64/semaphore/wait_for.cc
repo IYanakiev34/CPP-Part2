@@ -1,4 +1,5 @@
 #include "semaphore.ih"
+#include <iostream>
 
 void Semaphore::wait_for(size_t seconds)
 {
