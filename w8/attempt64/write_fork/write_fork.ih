@@ -1,0 +1,7 @@
+#include "write_fork.h"
+#include "../fork.h"
+#include "../semaphore/semaphore.h"
+#include <iostream>
+#include <unistd.h>
+#include <thread>
+#include <sys/wait.h>
